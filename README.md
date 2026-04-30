@@ -10,6 +10,7 @@ Each skill is a self-contained directory you can install independently.
 
 | Skill | Description |
 |-------|-------------|
+| [spec-creator](./spec-creator/) | Turn an idea or rough draft into a publication-grade end-to-end spec — guided dialogue (Greenfield) or gap-analysis upgrade (Upgrade) |
 | [spec2opsx](./spec2opsx/) | Convert a spec document into OpenSpec changes — vertical slices, full artifact set, skill-aware |
 
 ---
