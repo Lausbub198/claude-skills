@@ -1,0 +1,133 @@
+{
+  "skill_name": "telepro-script",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Schreib mir ein TelePro Teleprompter-Skript für ein Planet-Demo Video (ca. 5 Minuten) zum Thema: 'Wie ich mit n8n und Claude automatisch meine YouTube-Kommentare beantworte'. Die Zielgruppe sind Mittelständler die KI kennenlernen wollen. Der Ton soll locker und pragmatisch sein.",
+      "expected_output": "A complete TelePro-formatted script with proper ## lines for speech, # section headings, [PAUSE:N] markers, [SLOW]/[FAST] zones, **bold** and !!trigger!! inline markup, and [NOTE:] annotations. Should follow Planet-Demo structure: Hook, Was & Warum, Demo, Key Takeaways, CTA. Hook must start with viewer pain (not a dream scenario). Hook ends with a video-roadmap preview ('Ich zeige dir heute: X, Y, Z'). Key Takeaways section required. CTA is personal and human.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "double-hash-prefix",
+          "text": "Alle gesprochenen Zeilen beginnen mit ## direkt gefolgt vom Text (kein Leerzeichen nach ##)"
+        },
+        {
+          "id": "no-horizontal-rules",
+          "text": "Keine --- (Trennstriche/Atemstriche) vorhanden — diese werden nicht mehr verwendet"
+        },
+        {
+          "id": "metadata-note",
+          "text": "Eine [NOTE: SKRIPT-INFO ...] Zeile mit Metadaten (Format, Dauer, Sektionen) ist vorhanden"
+        },
+        {
+          "id": "section-headings",
+          "text": "Mindestens 4 Sektionen (# Titel) die dem Planet-Demo Format folgen: Hook, Was & Warum / Demo, Key Takeaways, CTA"
+        },
+        {
+          "id": "hook-pain-first",
+          "text": "Der Hook startet mit einem konkreten Schmerz/Problem des Zuschauers — nicht mit einem Traumszenario oder Lösung als erstes"
+        },
+        {
+          "id": "hook-video-roadmap",
+          "text": "Am Ende des Hooks wird kurz aufgezählt was im Video gezeigt wird (z.B. 'Ich zeige dir heute: X, Y, Z' oder ähnliche Vorschau)"
+        },
+        {
+          "id": "key-takeaways",
+          "text": "Eine Key Takeaways Sektion ist vorhanden mit mindestens 3 konkreten Learnings"
+        },
+        {
+          "id": "kaffegesprach-tone",
+          "text": "Mindestens 3 direkte Zuschauer-Ansprachen: Fragen ('Kennst du das?'), Einbeziehung ('Stell dir vor...'), Denk-Pausen ('Und weißt du was?')"
+        },
+        {
+          "id": "cta-present",
+          "text": "CTA am Ende: persönlich formuliert mit Kommentar-Einladung und Kanal-Abo-Bitte (human, nicht verkäuferisch)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Ich brauche einen Teleprompter Text für ein Sonne-Format Video (15-20 Min) über 'KI-Agenten im Mittelstand — was sie können und wo die Grenzen sind'. Bitte strukturiere das mit klaren Sektionen und setze Pausen an sinnvollen Stellen. Wichtige Punkte: Was sind Agenten überhaupt, 3 konkrete Anwendungsfälle (Kundenservice, Rechnungsverarbeitung, Marktbeobachtung), was kann noch nicht funktionieren, Fazit und CTA.",
+      "expected_output": "A longer Sonne-format script with 7-8 sections, natural spoken language, hook starts with pain not dream scenario, hook ends with video roadmap preview, key takeaways section present, CTA in personal template style.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "double-hash-prefix",
+          "text": "Alle gesprochenen Zeilen beginnen mit ## direkt gefolgt vom Text (kein Leerzeichen nach ##)"
+        },
+        {
+          "id": "no-horizontal-rules",
+          "text": "Keine --- (Trennstriche/Atemstriche) vorhanden — diese werden nicht mehr verwendet"
+        },
+        {
+          "id": "metadata-note",
+          "text": "Eine [NOTE: SKRIPT-INFO ...] Zeile mit Metadaten (Format, Dauer, Sektionen) ist vorhanden"
+        },
+        {
+          "id": "sonne-structure",
+          "text": "Das Skript hat mindestens 6 Sektionen (# Titel) die alle angeforderten Punkte abdecken"
+        },
+        {
+          "id": "three-use-cases",
+          "text": "Alle 3 angeforderten Anwendungsfälle (Kundenservice, Rechnungsverarbeitung, Marktbeobachtung) kommen vor"
+        },
+        {
+          "id": "hook-pain-first",
+          "text": "Der Hook startet mit einem konkreten Schmerz/Problem des Zuschauers — nicht mit einem Traumszenario oder Lösung als erstes"
+        },
+        {
+          "id": "hook-video-roadmap",
+          "text": "Am Ende des Hooks wird kurz aufgezählt was im Video gezeigt wird (z.B. 'Ich zeige dir heute: X, Y, Z' oder ähnliche Vorschau)"
+        },
+        {
+          "id": "key-takeaways",
+          "text": "Eine Key Takeaways Sektion ist vorhanden mit mindestens 3 konkreten Learnings"
+        },
+        {
+          "id": "kaffegesprach-tone",
+          "text": "Mindestens 3 direkte Zuschauer-Ansprachen: Fragen, Einbeziehung ('Stell dir vor...'), Denk-Pausen ('Und weißt du was?')"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Bitte wandle diesen Rohtext in ein TelePro-formatiertes Skript um: [Rohtext über KI-Assistenten in 10 Minuten bauen]",
+      "expected_output": "The raw prose converted to proper TelePro format: ## lines for each spoken sentence, # section headings added to structure the content, appropriate pauses and emphasis markers, speed zones where needed. Hook should start with pain, key takeaways and CTA at end.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "double-hash-prefix",
+          "text": "Alle gesprochenen Zeilen beginnen mit ## direkt gefolgt vom Text (kein Leerzeichen nach ##)"
+        },
+        {
+          "id": "no-horizontal-rules",
+          "text": "Keine --- (Trennstriche/Atemstriche) vorhanden"
+        },
+        {
+          "id": "metadata-note",
+          "text": "Eine [NOTE: SKRIPT-INFO ...] Zeile mit Metadaten ist vorhanden"
+        },
+        {
+          "id": "content-preserved",
+          "text": "Alle Kernaussagen des Rohtexts sind erhalten: 10 Minuten, kein technisches Wissen, Claude, Formular-Tool, 3 Schritte"
+        },
+        {
+          "id": "sections-added",
+          "text": "Mindestens 3 Sektionen (# Titel) wurden hinzugefügt um den Content zu strukturieren"
+        },
+        {
+          "id": "hook-video-roadmap",
+          "text": "Am Ende des Hooks wird aufgezählt was im Video gezeigt wird (Video-Roadmap-Vorschau)"
+        },
+        {
+          "id": "key-takeaways",
+          "text": "Eine Key Takeaways Sektion ist vorhanden mit den wichtigsten Learnings"
+        },
+        {
+          "id": "kaffegesprach-tone",
+          "text": "Mindestens 2 direkte Zuschauer-Ansprachen wurden hinzugefügt (Fragen, Einbeziehung)"
+        }
+      ]
+    }
+  ]
+}
