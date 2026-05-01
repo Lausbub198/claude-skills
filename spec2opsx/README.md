@@ -2,13 +2,15 @@
 
 A Claude Code skill that converts a specification document into a set of [OpenSpec](https://github.com/Fission-AI/OpenSpec) (opsx) changes — each with a full artifact set and immediately testable end-to-end.
 
+> **v1.1.0** — Added CLI preflights, fixed skill availability detection, extended tech stack coverage (Vanilla JS, BroadcastChannel, IndexedDB, Web Audio API), clarified artifact loop, added mid-flow recovery guidance.
+
 ---
 
 ## What it does
 
 You write (or already have) a product specification. You run `/spec2opsx your-spec.md`. The skill:
 
-1. **Initializes OpenSpec** in your project if it isn't already set up
+1. **Runs preflights** — verifies the spec file exists, checks for multi-repo scenarios, confirms the `openspec` CLI is installed, and initializes OpenSpec if needed
 2. **Detects the tech stack** mentioned in the spec and recommends relevant Claude Code skills
 3. **Slices the spec into vertical changes** — each one bundles backend + frontend so the feature is runnable and testable immediately after implementation
 4. **Creates all four OpenSpec artifacts** per change: `proposal.md`, `specs/`, `design.md`, `tasks.md`
@@ -28,13 +30,13 @@ You write (or already have) a product specification. You run `/spec2opsx your-sp
 
 ## Installation
 
-Copy the skill file into your Claude Code skills directory:
+Copy the skill directory into your Claude Code skills folder:
 
 ```bash
-cp spec2opsx.md ~/.claude/skills/spec2opsx.md
+cp -r spec2opsx ~/.claude/skills/
 ```
 
-That's it. Claude Code picks it up automatically on the next session.
+Claude Code picks it up automatically on the next session.
 
 ---
 
@@ -71,25 +73,55 @@ That's it. Claude Code picks it up automatically on the next session.
 
 ## How it works
 
-### Step 0 — Project init
+### Step 0 — Preflights
 
-The skill checks whether OpenSpec is already initialized in your project. If not, it runs `openspec init --tools <value>` non-interactively. Your global OpenSpec profile is never touched.
+Before doing anything, the skill runs four checks in order:
 
-### Step 0b — Tech stack detection and skill recommendations
+1. **Spec file exists** — if the path is wrong, stops with a clear error message
+2. **Multi-repo check** — if the spec describes multiple services, asks which project root to use *before* running `openspec init`
+3. **OpenSpec CLI installed** — checks `which openspec`; if missing, stops and prints the install command
+4. **Project init** — checks if OpenSpec is already initialized; if not, runs `openspec init --tools <value>` non-interactively
 
-The skill scans the spec for technology signals (Node.js, React, TypeScript, PostgreSQL, etc.) and maps them to Claude Code skills that encode best practices for those technologies.
+Your global OpenSpec profile is never touched.
 
-It checks which skills you have installed and presents a list:
+### Step 0e — Tech stack detection and skill recommendations
+
+The skill scans the spec for technology signals and maps them to Claude Code skills. Covered stacks include:
+
+| Tech | Skills |
+|------|--------|
+| Node.js, Express, Fastify, Hono | `backend-patterns` |
+| React, Next.js, Vite, Remix | `react-best-practices`, `frontend-patterns` |
+| TypeScript | `coding-standards` |
+| Python, FastAPI, Flask | `python-patterns` |
+| Django | `django-patterns` |
+| Go / Golang | `golang-patterns` |
+| Kotlin, Spring Boot | `kotlin-patterns`, `springboot-patterns` |
+| REST API, HTTP endpoints | `api-design` |
+| Tests, Jest, Vitest, pytest | `tdd-workflow` |
+| E2E, Playwright, Cypress | `e2e-testing` |
+| Auth, JWT, OAuth, sessions | `security-review` |
+| WebSocket, SSE, real-time | `backend-patterns` |
+| Tailwind, CSS, animations | `frontend-patterns` |
+| PostgreSQL, MySQL, Prisma, Drizzle | `backend-patterns` |
+| **Vanilla JS, single-file HTML** | `coding-standards`, `frontend-patterns` |
+| **IndexedDB, localStorage** | `coding-standards` |
+| **BroadcastChannel, inter-window sync** | `backend-patterns` |
+| **Custom parsers, custom syntax** | `coding-standards` |
+| ZIP, JSZip, file export/import | `coding-standards` |
+
+Since Claude Code skills are only visible when loaded into the active session, the skill asks you directly which ones you have installed rather than trying to detect them automatically:
 
 ```
-Detected tech stack: Node.js, React, TypeScript, WebSocket, PostgreSQL
+Detected tech stack: Vanilla JS, BroadcastChannel, IndexedDB, Web Audio API
 
 Recommended skills:
-  ✓ backend-patterns      — available
-  ✓ react-best-practices  — available
-  ⚠ frontend-patterns     — not installed  → https://github.com/anthropics/claude-code-skills
-  ⚠ coding-standards      — not installed  → https://github.com/anthropics/claude-code-skills
-  ✓ tdd-workflow          — available
+  coding-standards
+  frontend-patterns
+  backend-patterns
+
+Which of these do you have installed?
+(Type the names, "all", "none", or "unknown")
 ```
 
 Then it asks how you want skill references handled in the generated artifacts:
@@ -134,7 +166,7 @@ You can adjust names, merge changes, or reorder before anything is created. In `
 
 ### Step 3 — Artifact creation
 
-For each change, the skill creates:
+For each change, the skill emits a status line (`── Change N/X: <name> ──`) then creates:
 
 | Artifact | Contents |
 |----------|----------|
@@ -145,7 +177,7 @@ For each change, the skill creates:
 
 **Interactive mode** pauses after each artifact so you can review it. The pause after `design.md` is intentional — that's the cheapest moment to change tech choices or architecture before tasks are generated.
 
-**Fast mode** (`--fast`) creates all four artifacts per change without pausing.
+**Fast mode** (`--fast`) creates all four artifacts per change without pausing, using `/opsx:ff` in one step.
 
 ### Step 4 — Summary
 
@@ -169,10 +201,11 @@ Recommended order: foundation → file-tracking → git-tracking → ...
 your-spec.md
      │
      ▼
-/spec2opsx ──► openspec init (if needed)
+/spec2opsx
      │
-     ▼
- tech stack detection + skill recommendations
+     ├─► preflight: file exists? CLI installed? multi-repo?
+     ├─► openspec init (if needed)
+     ├─► tech stack detection + skill recommendations
      │
      ▼
  breakdown proposal (interactive) or auto-proceed (--fast)
@@ -192,7 +225,7 @@ your-spec.md
 | | Interactive | Fast (`--fast`) |
 |-|-------------|-----------------|
 | Breakdown proposal | shown, waits for approval | shown briefly, auto-proceeds |
-| Artifact creation | pauses after each artifact | all 4 created in one step |
+| Artifact creation | pauses after each artifact | all 4 created in one step (`/opsx:ff`) |
 | Architecture checkpoint | yes — explicit pause at `design.md` | no |
 | Best for | first pass on a new spec, or when you want to influence design | already familiar with the spec, want artifacts quickly |
 
@@ -220,7 +253,23 @@ And `tasks.md` includes inline hints:
 
 These hints are added only where a skill makes a meaningful difference — not on every task.
 
-Skills are sourced from the [everything-claude-code](https://github.com/anthropics/claude-code-skills) collection. Installation is typically: copy the skill directory into `~/.claude/skills/`.
+Skills are sourced from the [everything-claude-code](https://github.com/anthropics/claude-code-skills) collection. Installation: copy the skill directory into `~/.claude/skills/`.
+
+---
+
+## Recovery from interrupted runs
+
+If you cancel after the breakdown is approved but before all changes are created:
+
+**Option A — resume manually:**
+1. Run `/opsx:new <next-change-name>` for each remaining change
+2. Follow the Step 3 artifact sequence per change
+
+**Option B — restart cleanly:**
+1. Delete the `openspec/` directory
+2. Re-run `/spec2opsx <spec-path>` from the beginning
+
+To skip already-created changes: tell Claude `"Changes 1–N are done, continue from change N+1."` The skill will skip init and jump straight to the remaining slices.
 
 ---
 
@@ -246,6 +295,24 @@ openspec/
     ├── act-management/
     └── live-stats/
 ```
+
+---
+
+## Changelog
+
+### v1.1.0
+- Added Step 0 preflights: spec file existence check, `openspec` CLI check, multi-repo check (moved from Rules)
+- Fixed skill availability detection: replaced false "Claude can see installed skills" claim with an explicit user prompt
+- Extended tech stack detection table: Vanilla JS, IndexedDB, BroadcastChannel, Web Audio API, custom parsers, ZIP/JSZip
+- Clarified `skill-mode` storage (held in conversation context, default [C] if unanswered)
+- Added per-artifact status lines in Step 3 for legible progress
+- Added `--fast` mode summary format
+- Added Recovery from mid-flow interruption section
+- Fixed installation command in README (`cp -r` directory, not single file)
+- Added `version` and `requires` to SKILL.md frontmatter
+
+### v1.0.0
+- Initial release
 
 ---
 
