@@ -1,7 +1,7 @@
 ---
 name: spec2opsx
 description: Converts a spec document into OpenSpec (opsx) changes. Splits the document into logical units, initializes opsx if needed, and creates all artifacts (proposal, specs, design, tasks) per change. Supports --fast and --tools flags.
-version: 1.1.0
+version: 1.2.0
 requires: openspec CLI (npm install -g openspec)
 ---
 
@@ -323,8 +323,60 @@ Recommended order: [list in dependency order]
 
 ---
 
+## Step 5: Consistency Audit
+
+After all changes are created, spawn a single `architect` subagent (read-only — no edits) to audit all artifacts against the original spec.
+
+The agent checks three dimensions:
+
+1. **Internal consistency per change** — `proposal.md` ↔ `specs/` ↔ `design.md` ↔ `tasks.md` agree on interfaces, filenames, event names, and numeric thresholds
+2. **Cross-change consistency** — shared types defined in one change are referenced correctly by all consumers; file paths and module names are stable; inter-module contracts (BroadcastChannel events, function signatures, etc.) match on both sides
+3. **Spec conformance** — every acceptance criterion appears in at least one change's `tasks.md`; all RISKs are addressed; no thresholds have drifted (debounce durations, clamp ranges, frame-rate constants, etc.)
+
+Report findings as `CRITICAL` / `WARN` / `MINOR` with: change name, artifact file, line reference, and issue description.
+
+**In `--fast` mode**: run audit unconditionally — correctness always matters.
+
+**Output format:**
+```
+── Consistency Audit ──
+CRITICAL  foundation/specs/broadcast-channel/spec.md  Missing heartbeat:pong in Prompter→Studio catalogue
+WARN      take-recording/tasks.md  Version snapshot ownership unclear — Studio or Prompter?
+MINOR     image-library/design.md  Resize described as "50%" but spec says 2048px longest side
+...
+X CRITICAL · Y WARN · Z MINOR
+```
+
+If zero findings: `✓ No issues found — all artifacts consistent.`
+
+---
+
+## Step 6: Cascade Fix
+
+Fix all CRITICAL and WARN findings from Step 5, enforcing the spec→design→tasks cascade for every change touched.
+
+**For each CRITICAL or WARN finding:**
+1. Fix the **spec file** first (source of truth) — use `/opsx:continue` to apply the edit (or `/opsx:ff` in `--fast` mode)
+2. If the fix changes an architecture decision or integration point → use `/opsx:continue` to update **design.md** for that change in the same pass
+3. If the fix changes an implementation step or adds/removes work → use `/opsx:continue` to update **tasks.md** for that change in the same pass
+4. All three updates are one atomic edit — never fix a spec and leave design/tasks stale
+
+**MINOR findings:** apply via `/opsx:continue` only when trivially safe (terminology, formatting); skip if ambiguous.
+
+After all fixes, re-run the Step 5 audit to verify no CRITICAL/WARN findings remain. If new issues surface, iterate (max 2 additional rounds; if issues persist after 2 rounds, surface to user).
+
+**Append to the Step 4 summary block:**
+```
+Audit:    6 CRITICAL · 24 WARN · 22 MINOR found
+Fixed:    all CRITICAL and WARN; 4 MINOR skipped (ambiguous)
+Re-audit: ✓ 0 CRITICAL · 0 WARN · 4 MINOR remaining
+```
+
+---
+
 ## Rules
 
+- **Spec→design→tasks cascade (CRITICAL):** When a spec file changes, its parent change's `design.md` and `tasks.md` MUST be reviewed and updated in the same edit pass. Fixing a spec without cascading into design/tasks leaves stale artifacts. This applies both in Step 6 automated fixes and in any manual edits during Step 3.
 - Never put the entire spec document into a single change — always split
 - In fast mode, still read the spec fully before creating anything
 - Do not modify the user's global OpenSpec profile

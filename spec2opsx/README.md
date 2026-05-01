@@ -2,7 +2,7 @@
 
 A Claude Code skill that converts a specification document into a set of [OpenSpec](https://github.com/Fission-AI/OpenSpec) (opsx) changes — each with a full artifact set and immediately testable end-to-end.
 
-> **v1.1.0** — Added CLI preflights, fixed skill availability detection, extended tech stack coverage (Vanilla JS, BroadcastChannel, IndexedDB, Web Audio API), clarified artifact loop, added mid-flow recovery guidance.
+> **v1.2.0** — Added Steps 5 & 6: automatic consistency audit (architect subagent) and cascade fix with enforced spec→design→tasks propagation after all artifacts are created.
 
 ---
 
@@ -15,6 +15,8 @@ You write (or already have) a product specification. You run `/spec2opsx your-sp
 3. **Slices the spec into vertical changes** — each one bundles backend + frontend so the feature is runnable and testable immediately after implementation
 4. **Creates all four OpenSpec artifacts** per change: `proposal.md`, `specs/`, `design.md`, `tasks.md`
 5. **Embeds skill references** in the artifacts so `/opsx:apply` automatically uses best-practice skills during implementation (optional, your choice)
+6. **Runs a consistency audit** — spawns an architect subagent to check all artifacts for internal, cross-change, and spec-conformance issues; reports findings as CRITICAL / WARN / MINOR
+7. **Fixes all CRITICAL and WARN findings** — applies fixes via `/opsx:continue` with enforced spec→design→tasks cascade, then re-audits to confirm clean
 
 ---
 
@@ -193,6 +195,34 @@ Next step: /opsx:apply foundation to start implementation
 Recommended order: foundation → file-tracking → git-tracking → ...
 ```
 
+### Step 5 — Consistency Audit
+
+After all changes are created, an `architect` subagent reads every artifact and the original spec to audit three dimensions:
+
+| Dimension | What it checks |
+|-----------|----------------|
+| **Internal consistency per change** | `proposal.md` ↔ `specs/` ↔ `design.md` ↔ `tasks.md` agree on interfaces, filenames, event names, and numeric thresholds |
+| **Cross-change consistency** | Shared types are referenced correctly by all consumers; file paths and module names are stable; inter-module contracts match on both sides |
+| **Spec conformance** | Every acceptance criterion appears in at least one `tasks.md`; all RISKs are addressed; no thresholds have drifted |
+
+Findings are reported as `CRITICAL` / `WARN` / `MINOR` with change name, file, line, and description. The audit runs in both interactive and `--fast` mode — it is never skipped.
+
+### Step 6 — Cascade Fix
+
+Every CRITICAL and WARN finding from Step 5 is fixed via `/opsx:continue` (or `/opsx:ff` in fast mode), enforcing the **spec→design→tasks cascade**:
+
+1. Fix the **spec file** first — it is the source of truth
+2. If an architecture decision changed → update **design.md** in the same pass
+3. If implementation steps changed → update **tasks.md** in the same pass
+
+All three edits are atomic — a spec fix is never committed without its downstream cascade. MINOR findings are applied only when trivially safe. After all fixes, Step 5 re-runs to confirm clean. The final audit result is appended to the Step 4 summary:
+
+```
+Audit:    6 CRITICAL · 24 WARN · 22 MINOR found
+Fixed:    all CRITICAL and WARN; 4 MINOR skipped (ambiguous)
+Re-audit: ✓ 0 CRITICAL · 0 WARN · 4 MINOR remaining
+```
+
 ---
 
 ## Workflow overview
@@ -215,6 +245,15 @@ your-spec.md
    /opsx:new → proposal → specs → design → tasks
      │
      ▼
+ consistency audit (architect subagent — always runs)
+     │
+     ▼
+ cascade fix: /opsx:continue per finding (spec → design → tasks)
+     │
+     ▼
+ re-audit: ✓ 0 CRITICAL · 0 WARN
+     │
+     ▼
  /opsx:apply <change-name>   ← implement one change at a time
 ```
 
@@ -227,6 +266,8 @@ your-spec.md
 | Breakdown proposal | shown, waits for approval | shown briefly, auto-proceeds |
 | Artifact creation | pauses after each artifact | all 4 created in one step (`/opsx:ff`) |
 | Architecture checkpoint | yes — explicit pause at `design.md` | no |
+| Consistency audit (Step 5) | always runs | always runs |
+| Cascade fix (Step 6) | `/opsx:continue` per finding | `/opsx:ff` per finding |
 | Best for | first pass on a new spec, or when you want to influence design | already familiar with the spec, want artifacts quickly |
 
 ---
@@ -299,6 +340,12 @@ openspec/
 ---
 
 ## Changelog
+
+### v1.2.0
+- Added Step 5: consistency audit — architect subagent checks all artifacts for internal, cross-change, and spec-conformance issues; reports CRITICAL / WARN / MINOR findings
+- Added Step 6: cascade fix — fixes all CRITICAL/WARN findings via `/opsx:continue` (or `/opsx:ff` in fast mode) with enforced spec→design→tasks propagation; re-audits to confirm clean
+- Added `Spec→design→tasks cascade` rule to Rules section: spec edits must always cascade into design.md and tasks.md in the same pass
+- Updated workflow diagram, interactive vs fast mode table, and "What it does" summary
 
 ### v1.1.0
 - Added Step 0 preflights: spec file existence check, `openspec` CLI check, multi-repo check (moved from Rules)
