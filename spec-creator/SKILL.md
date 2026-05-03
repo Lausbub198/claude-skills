@@ -134,12 +134,46 @@ Every spec produced by this skill must contain these sections, in this order. Se
 9. IMPLEMENTATION RISKS (RISK-1 through RISK-N)
 10. ACCEPTANCE CRITERIA (checkbox list, grouped)
 11. OUT OF SCOPE (V2+ items)
-12. IMPLEMENTATION ROADMAP (phased, daily granularity)
+12. IMPLEMENTATION ROADMAP (phased, daily granularity — BDD tasks before implementation tasks, see convention below)
 13. DECISIONS (decision log table)
 14. NAMING & BRANDING
 ```
 
 For the full template with examples, read `references/spec-structure.md`.
+
+## IMPLEMENTATION ROADMAP convention (mandatory)
+
+The roadmap must always follow this task order — **BDD before implementation, unit tests explicit**:
+
+```markdown
+## IMPLEMENTATION ROADMAP
+
+### Phase 1 — BDD Scenarios
+- [ ] BDD: <Feature / Element A>
+- [ ] BDD: <Feature / Element B>
+- [ ] BDD: <Feature / Element C>
+
+### Phase 2 — Implementation
+- [ ] IMPL: <Element A>
+- [ ] IMPL: <Element B>
+- [ ] IMPL: <Element C>
+
+### Phase 3 — Unit Tests
+- [ ] TEST: <Module / service X>
+- [ ] TEST: <Module / service Y>
+
+### Phase 4 — Integration & Verification
+- [ ] E2E: <critical user flow>
+- [ ] VERIFY: acceptance criteria checklist
+```
+
+**Rules:**
+1. BDD tasks always come before any IMPL task — no exceptions.
+2. Unit test tasks are explicit line items, never implied.
+3. Each IMPL task maps 1:1 to a BDD task above it.
+4. opsx reads this roadmap and generates its task list from it — the order here is the order opsx will execute.
+
+**Rationale:** opsx is an external CLI tool initialized per project. The spec's roadmap is the contract that tells opsx what to build and in what order. Anchoring BDD-first here ensures test-driven execution without requiring changes to the opsx tool itself.
 
 ## Style conventions
 
