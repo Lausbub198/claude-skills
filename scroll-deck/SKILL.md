@@ -1,11 +1,11 @@
 ---
-name: product-page
-description: Builds a single-file, zero-dependency scrolling product page in HTML — the kind used to present a methodology, tool, pipeline, or product with a dark techy aesthetic. Each section reveals on scroll, content builds top to bottom, and a fixed right-side nav tracks progress. Use this skill whenever the user wants to present a process, product, or workflow as a web page that scrolls vertically like a product landing page (NOT a slide deck — for slide decks use frontend-slides instead). Trigger on phrases like "Produktseite erstellen", "web-Folie", "scrollende Präsentation", "product page", "landing page für mein Tool", "HTML Präsentation die man runterscrollt", "erkläre meinen Prozess als Webseite", "methodology page", or any request for a web-based visual presentation of a pipeline or workflow.
+name: scroll-deck
+description: Builds a single-file, zero-dependency scrolling HTML presentation — the kind used to present a methodology, tool, pipeline, or product with a dark techy aesthetic. Each section reveals on scroll, content builds top to bottom, and a fixed right-side nav tracks progress. Use this skill whenever the user wants to present a process, product, or workflow as a web page that scrolls vertically (NOT a slide deck — for slide decks use frontend-slides instead). Trigger on phrases like "scroll-deck", "web-Folie", "scrollende Präsentation", "Produktseite erstellen", "product page", "landing page für mein Tool", "HTML Präsentation die man runterscrollt", "erkläre meinen Prozess als Webseite", "methodology page", or any request for a web-based visual presentation of a pipeline or workflow.
 ---
 
-# Product Page Skill
+# Scroll-Deck Skill
 
-Builds a polished, single-file HTML product page that presents a product, methodology, or workflow as a vertically-scrolling web experience. Content reveals as the user scrolls, each section tells one part of the story, and the page works in any browser with zero dependencies beyond Google Fonts.
+Builds a polished, single-file HTML scroll-deck that presents a product, methodology, or workflow as a vertically-scrolling web experience. Content reveals as the user scrolls, each section tells one part of the story, and the page works in any browser with zero dependencies beyond Google Fonts.
 
 This is the pattern captured from `softwareschmiede.html` in TelePro — use it verbatim.
 
