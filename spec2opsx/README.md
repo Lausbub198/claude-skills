@@ -17,6 +17,7 @@ You write (or already have) a product specification. You run `/spec2opsx your-sp
 5. **Embeds skill references** in the artifacts so `/opsx:apply` automatically uses best-practice skills during implementation (optional, your choice)
 6. **Runs a consistency audit** — spawns an architect subagent to check all artifacts for internal, cross-change, and spec-conformance issues; reports findings as CRITICAL / WARN / MINOR
 7. **Fixes all CRITICAL and WARN findings** — applies fixes via `/opsx:continue` with enforced spec→design→tasks cascade, then re-audits to confirm clean
+8. **Generates BDD feature files** — calls `/opsx:bdd` per change to produce Gherkin `.feature` files and typed step stubs (all RED, ready for `/opsx:apply-bdd`)
 
 ---
 
@@ -32,13 +33,22 @@ You write (or already have) a product specification. You run `/spec2opsx your-sp
 
 ## Installation
 
-Copy the skill directory into your Claude Code skills folder:
+Copy the skill and its companion commands into your Claude Code folders:
 
 ```bash
+# 1. Install the skill
 cp -r spec2opsx ~/.claude/skills/
+
+# 2. Install the BDD commands (needed for /opsx:bdd and /opsx:apply-bdd)
+cp spec2opsx/commands/bdd.md ~/.claude/commands/opsx/
+cp spec2opsx/commands/apply-bdd.md ~/.claude/commands/opsx/
 ```
 
-Claude Code picks it up automatically on the next session.
+Claude Code picks everything up automatically on the next session.
+
+> **Why two locations?** The skill (`~/.claude/skills/`) drives the spec2opsx logic. The BDD commands (`~/.claude/commands/opsx/`) register `/opsx:bdd` and `/opsx:apply-bdd` as slash commands Claude can invoke. Both are needed for the full BDD workflow.
+>
+> When `spec2opsx` initializes a new project (`openspec init`), it automatically copies the BDD commands into the project's `.claude/commands/opsx/` so they are version-controlled alongside the project.
 
 ---
 
@@ -340,6 +350,12 @@ openspec/
 ---
 
 ## Changelog
+
+### v1.3.0
+- Added Step 7: BDD feature file generation — calls `/opsx:bdd` per change after artifacts are finalized; produces Gherkin `.feature` files and step stubs (all RED/pending)
+- Added `commands/` subfolder: `bdd.md` and `apply-bdd.md` ship with the skill and are auto-copied into `.claude/commands/opsx/` on `openspec init`
+- Language-agnostic BDD support: detects project language and generates step stubs for TypeScript (playwright-bdd, cucumber-js), Python (pytest-bdd, behave), Java/Kotlin (Cucumber JVM), Go (godog), Ruby, C# (SpecFlow)
+- `apply-bdd.md`: BDD gate enforced after every task — task only marked `[x]` when related scenarios are GREEN or PENDING
 
 ### v1.2.0
 - Added Step 5: consistency audit — architect subagent checks all artifacts for internal, cross-change, and spec-conformance issues; reports CRITICAL / WARN / MINOR findings
