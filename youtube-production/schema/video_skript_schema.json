@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "BUILT YouTube Video — Canonical Data Format. Single Source of Truth for all video artifacts. English field names.",
+
+  "meta": {
+    "title": "",
+    "title_alt": "",
+    "format": "sonne | planet-demo | planet-explainer",
+    "cluster": "",
+    "length_min": 0,
+    "date": "",
+    "editing_pattern": "",
+    "editing_pattern_rationale": ""
+  },
+
+  "a1_concept": {
+    "title": "",
+    "target_audience": "",
+    "core_promise": "",
+    "magic_moment": "",
+    "target_persona": "",
+    "stack": [],
+    "emotional_target": "",
+    "term_brands": [],
+
+    "hook": {
+      "type": "",
+      "opening_line": "",
+      "rationale": "",
+      "pas": {
+        "problem": "",
+        "agitation": "",
+        "solution": ""
+      },
+      "demo_teaser": "",
+      "engagement_question": ""
+    },
+
+    "brand_bumper": {
+      "variant": "",
+      "text": ""
+    },
+
+    "narrative_structure": {
+      "chosen": "",
+      "rationale": ""
+    },
+
+    "video_structure": [
+      {
+        "timecode": "00:00",
+        "content": "",
+        "block_type": ""
+      }
+    ],
+
+    "notebook_insights": [
+      {
+        "category": "",
+        "insight": "",
+        "source": ""
+      }
+    ],
+
+    "snowball_keywords": {
+      "autocomplete_mining": [],
+      "long_tail_filter": [],
+      "competition_check": "",
+      "relevance_check": "",
+      "main_keyword": "",
+      "secondary_keywords": []
+    },
+
+    "differentiation": "",
+
+    "cluster_classification": {
+      "cluster": "",
+      "type": "",
+      "related_videos": []
+    },
+
+    "micro_ctas": [
+      {
+        "timecode": "",
+        "question": ""
+      }
+    ],
+
+    "source_registry": [
+      {
+        "statistic": "",
+        "value": "",
+        "source": "",
+        "year": 0,
+        "url": "",
+        "retrieved_at": "",
+        "used_in_passages": [],
+        "text_overlay": null
+      }
+    ],
+
+    "doc_references": [
+      {
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      }
+    ]
+  },
+
+  "a2_roadmap": [
+    {
+      "phase": 1,
+      "name": "",
+      "precondition": "",
+      "goal": "",
+      "outcome": "",
+      "wow_moment": "",
+      "anchor": "^phase-1"
+    }
+  ],
+
+  "a3_script": [
+    {
+      "passage": 1,
+      "title": "",
+      "duration_sec": 0,
+      "phase_anchor": null,
+      "block_type": "",
+      "energy": "",
+      "viewer_sees": "",
+      "text_overlay": null,
+      "mode": "teleprompter | story",
+      "story": "",
+      "teleprompter": "",
+      "talking_points": [],
+      "stage_directions": [],
+      "camera_tip": "",
+      "fallback": null,
+      "source_overlay": null,
+      "graphic_refs": [],
+      "prompt_refs": [],
+      "retention_markers": []
+    }
+  ],
+
+  "a4_visuals": [
+    {
+      "id": "GR_01",
+      "type": "grafik | b-roll",
+      "passage": 0,
+      "filename": "",
+      "description": "",
+      "briefing": {
+        "type": "",
+        "title": "",
+        "boardroom_test": true
+      },
+      "graphic_desc_gemini": {
+        "prompt": "",
+        "content": "",
+        "style_note": ""
+      },
+      "graphic_desc_remotion": {
+        "composition_type": "custom_graphic",
+        "duration_seconds": 0,
+        "elements": [
+          {
+            "id": "",
+            "type": "text | icon | box | arrow | image_ref",
+            "content": "",
+            "appear_at_seconds": 0,
+            "animation": "fade_in | slide_left | slide_right | slide_up | scale_up | typewriter | draw_path",
+            "duration_seconds": 0.5,
+            "position": { "x": "", "y": "" },
+            "style": {}
+          }
+        ],
+        "transitions": {
+          "in": "fade",
+          "out": "fade"
+        },
+        "audio_sync": [
+          {
+            "trigger_word": "",
+            "element_id": "",
+            "sound_effect": "whoosh | pop | ding | swoosh | reveal | click | rise"
+          }
+        ],
+        "text_reference": ""
+      }
+    }
+  ],
+
+  "a5_prompts": [
+    {
+      "id": "PR_01",
+      "passage": 0,
+      "title": "",
+      "prompt": ""
+    }
+  ],
+
+  "a6_rehearsal": {
+    "prerequisites": [
+      {
+        "tool": "",
+        "version": "",
+        "plan": "",
+        "signup_url": "",
+        "api_key_path": ""
+      }
+    ],
+    "setup_blocks": [
+      {
+        "block": "A",
+        "title": "",
+        "goal": "",
+        "duration_min": 0,
+        "steps": []
+      }
+    ],
+    "demo_sequence": [
+      {
+        "nr": 1,
+        "action": "",
+        "input": "",
+        "screen_shows": "",
+        "duration": ""
+      }
+    ],
+    "tests": [
+      {
+        "action": "",
+        "expectation": ""
+      }
+    ],
+    "troubleshooting": [
+      {
+        "problem": "",
+        "symptom": "",
+        "cause": "",
+        "fix": "",
+        "prevention": ""
+      }
+    ],
+    "checklist_before": [],
+    "checklist_shoot_day": [],
+    "checklist_shooting": [],
+    "doc_sources": [
+      {
+        "source": "",
+        "url": "",
+        "retrieved_at": ""
+      }
+    ],
+    "verified_api_details": {},
+    "audio": {
+      "format": "48 kHz, 24-bit",
+      "target_lufs": -14,
+      "export": "Verlustfreies Format"
+    },
+    "time_estimate": {
+      "setup_min": 0,
+      "demo_min": 0,
+      "total_min": 0
+    }
+  },
+
+  "a7_cheat_sheet": [
+    {
+      "block": "",
+      "passages": "",
+      "duration": "",
+      "goal": "",
+      "bullet_points": []
+    }
+  ],
+
+  "a8_upload": {
+    "title_variants": [
+      {
+        "option": "A",
+        "title": "",
+        "characters": 0,
+        "hook_type": "",
+        "recommended": true
+      }
+    ],
+    "description": "",
+    "chapters": [
+      {
+        "time": "00:00",
+        "label": ""
+      }
+    ],
+    "tags": [],
+    "main_keyword": "",
+    "thumbnail_briefing": {
+      "scene_description": "",
+      "creator_pose": "",
+      "creator_emotion": "",
+      "headline": "",
+      "tool_composition": "",
+      "contrast_element": "",
+      "ab_variant": "",
+      "target_reaction": ""
+    },
+    "endscreen": {
+      "card_at": "",
+      "card_target": "",
+      "slot_left": "",
+      "slot_right": ""
+    },
+    "pinned_comment": "",
+    "community_strategy": {
+      "shorts_teaser": "",
+      "community_post_before": "",
+      "community_post_after": "",
+      "cross_promo": ""
+    },
+    "cluster_linking": {
+      "pillar_video": "",
+      "satellites": [],
+      "playlist": "",
+      "endscreen_strategy": ""
+    },
+    "consulting_anchor": {
+      "text": "",
+      "placement": ""
+    }
+  }
+}

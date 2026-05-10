@@ -1,0 +1,221 @@
+{
+  "api": {
+    "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent",
+    "auth": "key=${GOOGLE_API_KEY} as query parameter",
+    "response_format": "Base64 PNG in candidates[0].content.parts[].inline_data.data",
+    "migrated_from": "Freepik Mystic API (deprecated 2026-03-28)"
+  },
+
+  "defaults": {
+    "temperature": 1,
+    "topK": 40,
+    "topP": 0.95,
+    "responseModalities": ["TEXT", "IMAGE"]
+  },
+
+  "brand": {
+    "colors": {
+      "midnight": "#0A0E1A",
+      "deep_slate": "#1B2038",
+      "graphite": "#2A2F45",
+      "beacon_yellow": "#FFD23F",
+      "pulse_blue": "#4A9EFF",
+      "electric_coral": "#FF6B4A",
+      "signal_cyan": "#00E5CC",
+      "warm_white": "#F0EDE8",
+      "soft_silver": "#8B92A8",
+      "power_green": "#3DDC84",
+      "bokeh_amber": "#FFB347",
+      "bokeh_teal": "#4A9EFF"
+    },
+    "global_style": {
+      "_note": "MANDATORY — append to EVERY background and floating element prompt. Non-negotiable render style for all BUILT thumbnails.",
+      "render_style": "semi-realistic cinematic concept art, premium animated film keyframe aesthetic, 2.5D digital painting with volumetric depth, painterly backgrounds with sharp focal subject",
+      "render_style_negative": "NOT photorealistic, NOT fully 3D rendered, NOT cartoon, NOT anime, NOT sketch style",
+      "background_color": "exactly #0A0E1A midnight navy — not dark grey, not dark teal, not dark green — precisely midnight navy with subtle deep blue undertone",
+      "bokeh": "mandatory heavy bokeh filling 5% of background, large soft circular light orbs, warm amber bokeh (#FFB347) mixed with cool teal bokeh (#4A9EFF), prominent not subtle — absent bokeh is a defect",
+      "lighting": "two light sources: (1) warm amber practical lamp rear-left at 30-45 degree angle, (2) cool cyan tech/screen glow from subject front-center at 40% intensity. Global cinematic teal-and-orange color grade. Subtle blue LED edge glow at 30% opacity on subject silhouette.",
+      "color_balance": "Midnight #0A0E1A dominant 70%, Signal Cyan #00E5CC and Electric Coral #FF6B4A as surgical accent points only 10% combined, matte surfaces not glossy",
+      "quality": "16:9 aspect ratio, high detail on subject, atmospheric depth",
+      "prompt_block": "semi-realistic cinematic concept art, premium animated film keyframe aesthetic, 2.5D digital painting with volumetric depth, painterly background with sharp focal subject, exactly #0A0E1A midnight navy background (not dark grey, not dark teal), mandatory prominent bokeh: large soft circular amber (#FFB347) and teal (#4A9EFF) light orbs filling background, warm amber practical lamp rear-left 30-45 degree, cool cyan screen glow front-center 40% intensity, global cinematic teal-and-orange color grade, subtle blue LED edge glow 30% opacity on silhouette edges, matte surfaces not glossy, Signal Cyan #00E5CC and Electric Coral #FF6B4A as surgical accent points only, atmospheric depth"
+    },
+    "prompt_suffix": "semi-realistic cinematic concept art, premium animated film keyframe aesthetic, 2.5D digital painting with volumetric depth, painterly background with sharp focal subject, exactly #0A0E1A midnight navy background, mandatory prominent bokeh filling background: large soft circular warm amber (#FFB347) and cool teal (#4A9EFF) light orbs, warm amber practical lamp rear-left 30-45 degree angle, cool cyan screen glow front-center 40% intensity, global cinematic teal-and-orange color grade, subtle blue LED edge glow 30% opacity on silhouette, matte surfaces not glossy, professional and sovereign mood, high-end editorial quality, atmospheric depth, no neon colors, no bright white backgrounds, no stock photo aesthetic",
+    "negative_keywords": "Negative: photorealistic, fully 3D rendered, cartoon, anime, sketch style, neon colors, pure white background, dark grey background, dark teal background, pure black background, stock photo, emoji, clip-art, gaming aesthetic, RGB lights, racing stripes, minimal or absent bokeh, shock face, open mouth screaming, panic expression, exaggerated YouTube face, cluttered, low quality, blurry text, glossy surfaces, bright backgrounds",
+    "typography_instructions": "Large bold sans-serif headline text (Inter Black style), tight letter-spacing, warm golden yellow (#FFD23F) color with subtle gradient, 3D drop shadow on text (dark offset shadow), text occupies 40-50% of image area, maximum 3-5 words, text must be readable at very small sizes. Text MUST be general and sensational (e.g. 'UNFASSBAR!', 'WAHNSINN!') — NEVER specific tool names or technical terms. Text positioned on OPPOSITE side of face, OR one big centered word with face above it. Face glow color matches text color."
+  },
+
+  "templates": {
+    "built_shout": {
+      "description": "Haupttemplate (60% der Videos) — Tutorials, Tool-Reviews, How-Tos. Background-only, kein Creator.",
+      "color_weight": "Midnight 60%, Beacon Yellow 25%, Pulse Blue 15%",
+      "background_prompt_template": "YouTube thumbnail background scene, NO people, NO person, NO text, NO letters, wide angle {{scene_description}}, dark midnight navy atmosphere (#0A0E1A), {{lighting_style}}, cinematic depth of field, warm bokeh highlights, teal and orange color grade, premium tech aesthetic, matte surfaces, subtle blue LED edge glow on surfaces, empty compositional space on {{person_side}} side for person layer, 16:9 aspect ratio, 1344x768"
+    },
+    "expert_duo": {
+      "description": "Interview-Template (25% der Videos) — Experten-Gespraeche, Roundtables. Background-only, kein Creator.",
+      "color_weight": "Midnight 55%, Beacon Yellow 25%, Electric Coral 20%",
+      "background_prompt_template": "YouTube thumbnail background scene, NO people, NO person, NO text, NO letters, wide angle dark premium studio interior with {{scene_description}}, deep midnight navy (#0A0E1A), {{lighting_style}}, two subtle warm spotlight areas side by side suggesting two interview positions, thin vertical electric coral (#FF6B4A) accent line in center, cinematic depth of field, premium editorial quality, 16:9 aspect ratio, 1344x768"
+    },
+    "news_flash": {
+      "description": "News-Template (15% der Videos) — Woechentliche Updates, Breaking News, Roundups. Background-only, kein Creator.",
+      "color_weight": "Midnight 55%, Beacon Yellow 25%, Signal Cyan 20%",
+      "background_prompt_template": "YouTube thumbnail background scene, NO people, NO person, NO text, NO letters, dark midnight navy (#0A0E1A) background with {{scene_description}}, {{lighting_style}}, horizontal teal cyan (#00E5CC) accent bar at very bottom edge, urgent editorial layout, dynamic diagonal composition, premium news broadcast aesthetic, 16:9 aspect ratio, 1344x768"
+    }
+  },
+
+  "background_styles": {
+    "dark_cinematic": {
+      "description": "Dunkles physisches Studio, warmes Bokeh, tiefe Schatten — Standard fuer Tutorials und How-Tos",
+      "when_to_use": "meta.format == 'sonne', Tutorial-Videos, Tool-Reviews",
+      "lighting_style": "warm amber practical lights glowing softly in background, dramatic side-lighting, deep foreground shadows, premium studio atmosphere",
+      "prompt_suffix": "wide angle dark premium tech studio interior, matte desk surfaces, premium equipment silhouettes in deep background, warm bokeh depth, cinematic Rembrandt lighting, physical sense of space and depth"
+    },
+    "illustrated_workshop": {
+      "description": "Warme illustrierte Werkstatt-Welt, Roboter, Schaltkreise, amber Licht — fuer KI-Agenten und Multi-Agenten-Videos",
+      "when_to_use": "KI-Agenten-Themen, Multi-Agenten-Systeme, autonome KI-Workflows",
+      "lighting_style": "warm amber and gold workshop lighting, glowing circuit elements casting soft fill light, cozy technical atmosphere",
+      "prompt_suffix": "illustrated 3D workshop environment, small robots working on glowing circuit boards and code streams, floating holographic data elements, electric circuit patterns integrated into floor and walls, digital workshop atmosphere, warm ochre and midnight color palette, premium illustrated render quality, deep background with layered depth"
+    },
+    "abstract_tech": {
+      "description": "Holographische Displays, fliessende Daten-Partikel, Premium-Sci-Fi — fuer Zukunfts- und Innovations-Themen",
+      "when_to_use": "Zukunfts-Themen, Transformation, Innovation, KI-Strategie",
+      "lighting_style": "volumetric light beams, blue and teal particle glow, translucent floating UI panels",
+      "prompt_suffix": "abstract premium tech environment, holographic displays showing data visualizations and flowing code particles, translucent floating UI panels, blue and teal light streams, cinematic depth of field, McKinsey/Deloitte presentation quality, sophisticated and clean"
+    },
+    "clean_minimal": {
+      "description": "Minimales dunkles Studio, einzelne Lichtquelle, MacBook-Aesthetik — fuer C-Level und Premium-Inhalte",
+      "when_to_use": "C-Level-Inhalte, Premium-Beratungsthemen, strategische Videos",
+      "lighting_style": "single directional spotlight, dramatic architectural shadows, Apple product launch lighting",
+      "prompt_suffix": "minimalist premium dark studio, single elegant MacBook Pro on matte dark surface, architectural minimalism, premium material finishes, subtle blue ambient glow, Apple keynote aesthetic, zero clutter, boardroom quality"
+    }
+  },
+
+  "floating_elements": {
+    "_rembg_rule": "ALL floating element prompts MUST use plain solid light gray (#E0E0E0) background with strong subject-to-background contrast so rembg (birefnet-general) can produce a clean cutout. Never use white, never use gradients, never use shadow-on-background.",
+
+    "character_mascot": {
+      "description": "3D isometrischer Charakter passend zum Video-Thema — wird nach Generierung per rembg freigestellt",
+      "background_instruction": "plain solid light gray (#E0E0E0) background — uniform, no gradients, no shadows on background — required for rembg cutout",
+      "resolution": "768x768",
+      "generate_variations": 4,
+      "rembg_model": "birefnet-general",
+      "prompt_template": "premium 3D isometric {{character_type}} character, {{character_style}}, isolated on plain solid light gray (#E0E0E0) background with no gradients and no shadow on background, glossy render with soft self-shadows only on the character, warm rim-light, subtle ambient occlusion on character only, no text, no labels, high detail, Apple App Store icon quality, professional and sovereign mood, clear crisp edges for cutout",
+      "character_types": {
+        "helpful_robot": {
+          "description": "Freundlicher bipedaler Roboter — fuer allgemeine KI-Assistenz-Videos",
+          "character_style": "friendly bipedal robot with expressive rounded LED eyes, modern industrial design, warm amber highlight on chest panel, confident helpful pose with slight forward lean, clean geometric form"
+        },
+        "business_assistant": {
+          "description": "Professioneller Roboter im Business-Look — fuer Voice-Agent, Sekretariats-KI",
+          "character_style": "professional robot with a subtle dark jacket silhouette, holding a digital clipboard or tablet, upright confident stance, warm screen-glow from the tablet, efficient and trustworthy demeanor"
+        },
+        "data_analyst": {
+          "description": "Analytischer Roboter mit Daten-Visualisierungen — fuer Analyse- und Reporting-Videos",
+          "character_style": "analytical robot with miniature floating data charts around it, thoughtful examining pose, blue screen-glow illuminating face, one hand pointing at a data element"
+        },
+        "tech_wizard": {
+          "description": "Kreativer Tech-Roboter — fuer Build-Videos und innovative Projekte",
+          "character_style": "inventive robot in a dynamic building pose, golden sparks of light around hands, small code fragments floating nearby, excited forward-leaning stance"
+        }
+      }
+    },
+
+    "ui_mockup": {
+      "description": "Laptop oder Monitor der reale Software-UI zeigt — wird nach Generierung per rembg freigestellt",
+      "background_instruction": "plain solid light gray (#E0E0E0) background — uniform, no gradients, no shadow on background — required for rembg cutout",
+      "resolution": "1024x768",
+      "generate_variations": 2,
+      "rembg_model": "birefnet-general",
+      "prompt_template": "premium floating {{mockup_type}} isolated on plain solid light gray (#E0E0E0) background with no gradients and no shadow on background, screen showing {{ui_description}}, sleek dark aluminum body with soft self-shadows only on the device, {{perspective_style}}, no background elements, product render quality, clear crisp device edges for cutout, no text outside the screen",
+      "mockup_types": {
+        "laptop_perspective": {
+          "description": "MacBook-aehnlicher Laptop in 3D-Perspektive — dynamischer, mehr Tiefe",
+          "perspective_style": "slight 3D perspective tilt at 30 degree angle, lid open at 110 degrees, screen facing viewer"
+        },
+        "monitor_straight": {
+          "description": "Standalone Monitor frontal — klarer, mehr Screen-Flaeche sichtbar",
+          "perspective_style": "straight-on front view, thin bezel ultrawide monitor on minimal stand"
+        }
+      },
+      "ui_description_guide": "Derive from a1_concept.stack[0]. Examples: 'Claude Code terminal with glowing green code output and orange asterisk logo', 'n8n workflow diagram with colorful connected nodes on dark background', 'Twilio dashboard showing call log interface', 'voice transcription waveform visualization on dark UI'"
+    },
+
+    "directional_arrow": {
+      "description": "Grosser geschwungener Pfeil als Aufmerksamkeits-Leiter — immer Beacon Yellow — wird per rembg freigestellt",
+      "background_instruction": "plain solid light gray (#E0E0E0) background — uniform, no gradients — required for rembg cutout",
+      "resolution": "512x512",
+      "generate_variations": 1,
+      "rembg_model": "birefnet-general",
+      "prompt_template": "large bold curved arrow {{direction_description}}, thick stroke weight, warm golden yellow (#FFD23F) color with subtle warm gradient on stroke, slight 3D depth with self-shadow on arrow body only, isolated on plain solid light gray (#E0E0E0) background with no other elements and no shadow on background, bold graphic clarity, clean crisp edges for cutout, no text",
+      "directions": {
+        "pointing_right": "curving from upper-left to right, tip pointing rightward",
+        "pointing_left": "curving from upper-right to left, tip pointing leftward",
+        "pointing_down_left": "curving from upper-right downward, tip pointing to lower-left",
+        "pointing_down_right": "curving from upper-left downward, tip pointing to lower-right"
+      },
+      "usage_rule": "Arrow always points FROM the headline text TOWARD the emphasized element (person, mockup, or mascot). Never use two arrows in one thumbnail."
+    }
+  },
+
+  "facial_expressions": {
+    "_note": "Used for VIDEO FRAME SELECTION GUIDANCE only — NOT for Gemini image generation. Creator always comes from real video footage via rembg.",
+    "sovereign_wonder": {
+      "description": "Fuer 'Das aendert alles'-Momente, neue Features",
+      "prompt_phrase": "expression of sovereign wonder, slightly raised eyebrows, genuine fascination, subtle closed-mouth amazement, eyes wide with intellectual curiosity"
+    },
+    "focused_gaze": {
+      "description": "Fuer How-Tos, Step-by-Step Tutorials",
+      "prompt_phrase": "focused determined gaze, slight concentration, looking at camera with quiet confidence and expertise"
+    },
+    "slight_smile": {
+      "description": "Fuer Erfolgsberichte, 'So habe ich X gebaut'",
+      "prompt_phrase": "subtle warm smile, confident and approachable, eyes engaged and friendly, radiating quiet satisfaction"
+    },
+    "curious_skeptical": {
+      "description": "Fuer Vergleiche, 'X vs. Y'",
+      "prompt_phrase": "one eyebrow slightly raised, curious and analytical expression, hint of skepticism, evaluating"
+    }
+  },
+
+  "creator_style": {
+    "_note": "Frame selection reference only — NOT used for Gemini image generation. Creator always comes from real video footage.",
+    "default_description": "a confident European man in his early 30s with short dark brown hair and light stubble",
+    "outfit_options": {
+      "navy": "dark navy mock-neck pullover, athletic fit, premium material",
+      "deep_slate": "deep slate grey crewneck pullover, tailored fit, matte fabric",
+      "forest_olive": "muted forest green mock-neck pullover, athletic fit, no logos"
+    },
+    "accessory": "dark-dialed minimalist watch on left wrist",
+    "forbidden": "no logos, no prints, no hoodies, no white clothing, no black clothing"
+  },
+
+  "text_overlay": {
+    "approach_a_overlay": {
+      "description": "Bild ohne Text generieren, Text separat drueberlegen (empfohlen fuer wichtige Thumbnails)",
+      "instructions": "Generate the image WITHOUT any text. Add headline text afterwards using Canva, Figma, or an HTML overlay with: font Inter Black 900, color #FFD23F, text-shadow 0 4-6px 20-30px rgba(0,0,0,0.8) + 3D offset 3px 3px 0 rgba(0,0,0,0.4), tracking -0.02em, 100-130pt"
+    },
+    "approach_b_in_prompt": {
+      "description": "Text direkt im Prompt angeben (schneller, aber weniger kontrollierbar)",
+      "instructions": "Include the exact text in the prompt. Add to prompt: 'with large bold readable text saying exactly: [TEXT]'. May require multiple generations for clean results."
+    }
+  },
+
+  "prompt_composition": {
+    "background_formula": "[TEMPLATE.background_prompt_template with filled {{variables}}] + [BACKGROUND_STYLES.<style>.prompt_suffix] + [BRAND.negative_keywords]",
+    "floating_element_formula": "[FLOATING_ELEMENTS.<type>.prompt_template with filled {{variables}}] — each element generated SEPARATELY on plain gray (#E0E0E0) background, then rembg cutout",
+    "background_variables": [
+      "{{scene_description}} — From thumbnail_briefing.scene_description (strip any person/creator references)",
+      "{{lighting_style}} — From background_styles.<selected_style>.lighting_style",
+      "{{person_side}} — 'left' or 'right' based on intended person placement"
+    ],
+    "floating_element_variables": [
+      "{{character_type}} — One of: helpful_robot, business_assistant, data_analyst, tech_wizard",
+      "{{character_style}} — From character_types.<character_type>.character_style",
+      "{{mockup_type}} — One of: laptop_perspective, monitor_straight",
+      "{{ui_description}} — Derived from a1_concept.stack[0] using ui_description_guide",
+      "{{direction_description}} — From directions.<direction>",
+      "{{perspective_style}} — From mockup_types.<type>.perspective_style"
+    ]
+  },
+
+  "curl_template": "curl -s -X POST \"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${GOOGLE_API_KEY}\" -H \"Content-Type: application/json\" -d '{\"contents\": [{\"parts\": [{\"text\": \"PROMPT_HERE\"}]}], \"generationConfig\": {\"responseModalities\": [\"TEXT\", \"IMAGE\"], \"temperature\": 1, \"topK\": 40, \"topP\": 0.95}}' | jq -r '.candidates[0].content.parts[] | select(.inline_data) | .inline_data.data' | base64 -d > OUTPUT_FILE.png"
+}

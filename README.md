@@ -1,8 +1,8 @@
 # claude-skills
 
-A collection of Claude Code skills for spec-driven development workflows.
+My personal collection of Claude Code skills for BUILT — KI für den Mittelstand.
 
-Each skill is a self-contained directory you can install independently.
+Each skill is a self-contained directory. Copy any skill into `~/.claude/skills/` and Claude Code picks it up automatically on the next session.
 
 ---
 
@@ -10,44 +10,45 @@ Each skill is a self-contained directory you can install independently.
 
 | Skill | Description |
 |-------|-------------|
-| [spec-creator](./spec-creator/) | Turn an idea or rough draft into a publication-grade end-to-end spec — guided dialogue (Greenfield) or gap-analysis upgrade (Upgrade) |
-| [spec2opsx](./spec2opsx/) | Convert a spec document into OpenSpec changes — vertical slices, full artifact set, skill-aware |
-| [telepro-script](./telepro-script/) | Erstellt fertige TelePro-Teleprompter-Skripte für BUILT YouTube-Videos — neues Skript schreiben oder Rohtext konvertieren, mit PAS-Hook, Kaffeegespräch-Stil und Key Takeaways |
+| [advanced-prompt-builder](./advanced-prompt-builder/) | Interaktiver Prompt Builder nach dem Least-to-Most + Multi-Rollen + RICK Framework — für komplexe, mehrstufige Prompts mit mehreren Experten-Perspektiven |
+| [prompt-builder](./prompt-builder/) | Interaktiver Prompt Builder nach dem 5-Pillar Framework (Rolle, Kontext, Auftrag, Constraints, Format) — schlankerer Ansatz für einzelne, fokussierte Prompts |
+| [scroll-deck](./scroll-deck/) | Builds a polished, single-file HTML scroll-deck — zero dependencies, dark techy aesthetic, content reveals as the user scrolls |
+| [spec-creator](./spec-creator/) | Creates publication-grade end-to-end software specifications in BUILT-Spec-Standard format — Greenfield dialogue or Upgrade gap-analysis |
+| [spec2opsx](./spec2opsx/) | Converts a spec document into OpenSpec (opsx) changes — splits into logical units, creates full artifact set (proposal, specs, design, tasks) per change |
+| [telepro-script](./telepro-script/) | Erstellt fertige TelePro-Teleprompter-Skripte im korrekten TelePro-Markdown-Format für BUILT YouTube-Videos |
+| [youtube-production](./youtube-production/) | Konsolidierter YouTube-Produktions-Skill für alle BUILT-Videoformate (Sonne, Planet-Demo, Planet-Explainer) — produziert 8 Artefakte (A1–A8) im interaktiven oder autonomen Modus |
+| [youtube-strategy](./youtube-strategy/) | Full pre-production strategy pipeline: Topic Research → Competitive Analysis → SEO & Metadata → Retention Script → A/B Testing → Demo Pack |
+| [youtube-thumbnail](./youtube-thumbnail/) | Generates YouTube thumbnails via Gemini Flash based on video scripts and the BUILT Brandbook — 4 background variations per run |
 
 ---
 
 ## Installation
 
-### Install a single skill
-
 ```bash
+# Install a single skill
 cp -r spec2opsx ~/.claude/skills/
+
+# Install all skills
+for d in */; do [ -f "$d/SKILL.md" ] && cp -r "$d" ~/.claude/skills/; done
 ```
-
-### Install all skills
-
-```bash
-cp -r */ ~/.claude/skills/
-```
-
-Claude Code picks up new skills automatically on the next session.
 
 ---
 
 ## Usage
 
-Once installed, invoke a skill by name in Claude Code:
+Invoke a skill by name in Claude Code:
 
 ```
-/spec2opsx path/to/your-spec.md
+/youtube-strategy
+/spec-creator path/to/idea.md
+/prompt-builder
 ```
 
-See each skill's `README.md` for full usage details and flags.
+See each skill's `SKILL.md` for full usage details and trigger phrases.
 
 ---
 
 ## Requirements
 
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI
-
-Some skills have additional dependencies — check the individual `README.md`.
+- [Claude Code](https://claude.ai/code) CLI
+- Some skills require additional setup — check the individual `SKILL.md`
