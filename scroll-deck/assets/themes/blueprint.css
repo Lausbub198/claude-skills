@@ -1,0 +1,131 @@
+/* ============================================================
+   BLUEPRINT THEME for scroll-deck
+   "Engineering schematic — deep navy + pulse blue, sharp corners."
+   Extracted from softwareschmiede-blueprint.html
+
+   USAGE: Paste AFTER base.css in a second <style> block.
+   FONT: no extra font needed.
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: deep technical navy ─── */
+  --bg:#0B1426;
+  --bg2:#0D1830;
+  --surface:rgba(74,158,255,0.04);
+  --surface2:rgba(74,158,255,0.09);
+  --border:rgba(74,158,255,0.16);
+  --border2:rgba(74,158,255,0.30);
+
+  /* ─── Text on dark navy ─── */
+  --text:rgba(255,255,255,0.88);
+  --text-dim:rgba(255,255,255,0.46);
+  --text-muted:rgba(255,255,255,0.22);
+
+  /* ─── Mono-accent: Pulse Blue dominates ─── */
+  --blue:#4A9EFF;
+  --blue-g:rgba(74,158,255,0.08);
+  --blue-b:rgba(74,158,255,0.26);
+
+  /* purple/amber collapse to blue — keep it mono */
+  --amber:#4A9EFF;
+  --amber-g:rgba(74,158,255,0.08);
+  --amber-b:rgba(74,158,255,0.26);
+  --purple:#00E5CC;
+  --purple-g:rgba(0,229,204,0.08);
+  --purple-b:rgba(0,229,204,0.26);
+
+  /* ─── Cyan as secondary "complete" signal ─── */
+  --cyan:#00E5CC;
+  --cyan-g:rgba(0,229,204,0.08);
+  --cyan-b:rgba(0,229,204,0.26);
+  --green:#00E5CC;
+  --green-g:rgba(0,229,204,0.08);
+  --green-b:rgba(0,229,204,0.26);
+
+  /* ─── Red preserved for genuine alerts ─── */
+  --red:#FF6B4A;
+  --red-g:rgba(255,107,74,0.08);
+  --red-b:rgba(255,107,74,0.26);
+}
+
+/* ─── Sharp corners — blueprint feel ─── */
+.card,.term,.skill-tag,.badge,.status,.audit-row,.pipe-icon{border-radius:0 !important}
+
+/* ─── Typography ─── */
+.h1,.h2,.h3{letter-spacing:-.02em}
+
+/* ─── Hero — schematic grid ─── */
+.hero-eyebrow{
+  background:rgba(74,158,255,0.08);
+  border:1px solid rgba(74,158,255,0.30);
+  color:#4A9EFF;
+  border-radius:0;
+}
+.hero-title{
+  font-weight:800;
+  background:linear-gradient(140deg,rgba(255,255,255,0.95) 0%,rgba(74,158,255,0.55) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-grid{
+  background-image:linear-gradient(rgba(74,158,255,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(74,158,255,.05) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+.hero-glow1{background:radial-gradient(circle,rgba(74,158,255,0.08) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(0,229,204,0.05) 0%,transparent 60%)}
+.hero-tag{border-radius:0}
+
+/* ─── Cards — blueprint panels ─── */
+.card{
+  background:rgba(74,158,255,0.04);
+  border:1px solid rgba(74,158,255,0.20);
+  box-shadow:none;
+}
+.card:hover{border-color:rgba(74,158,255,0.45);background:rgba(74,158,255,0.06)}
+
+/* ─── Terminal — dark teal-navy ─── */
+.term{
+  background:#060D1C;
+  border:1px solid rgba(74,158,255,0.30);
+  box-shadow:none;
+}
+.term-bar{background:rgba(74,158,255,0.05);border-bottom:1px solid rgba(74,158,255,0.18)}
+.td-r{background:#FF6B4A}.td-a{background:#4A9EFF}.td-g{background:#00E5CC}
+
+/* ─── Syntax — blueprint cool palette ─── */
+.ck{color:#4A9EFF}
+.cf{color:#00E5CC}
+.cs{color:rgba(255,255,255,0.7)}
+.ct{color:#4A9EFF}
+.cc{color:rgba(74,158,255,0.45);font-style:italic}
+.cn{color:#00E5CC}
+.cp{color:rgba(255,255,255,0.65)}
+
+.gk{color:#00E5CC;font-weight:700}
+.gc{color:#4A9EFF}
+.gv{color:rgba(255,255,255,0.7)}
+.gt{color:rgba(255,255,255,0.88)}
+
+.ftd{color:#4A9EFF}
+.ftf{color:rgba(255,255,255,0.42)}
+.ftn{color:#00E5CC}
+.fta{color:#4A9EFF}
+
+/* ─── Skill-tags ─── */
+.skill-tag{
+  background:rgba(74,158,255,0.06);
+  border:1px solid rgba(74,158,255,0.22);
+  color:rgba(255,255,255,0.62);
+}
+
+/* ─── Phase-nav ─── */
+.pn-dot{background:rgba(74,158,255,0.20);border-radius:0;width:8px;height:8px}
+.pn-dot.active{background:#4A9EFF;box-shadow:0 0 8px rgba(74,158,255,0.5)}
+
+/* ─── Pipeline ─── */
+.pipe-icon{background:rgba(74,158,255,0.06);border-color:rgba(74,158,255,0.30);color:#4A9EFF}
+.pipe-step+.pipe-step .pipe-icon::before{background:rgba(74,158,255,0.20)}
+
+/* ─── Selection ─── */
+::selection{background:#4A9EFF;color:#0B1426}

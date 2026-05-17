@@ -1,0 +1,192 @@
+/* ============================================================
+   CARIAD THEME for scroll-deck
+   Source: CARIAD Master V1.4 Design Rules (Master_template.pptx)
+   Mode: WHITE (light background — CARIAD's primary mode)
+   Note: For a Blue or Dark CARIAD variant, swap the :root vars
+         marked at the bottom. CARIAD uses 3 modes (Blue/White/Dark).
+
+   USAGE: Paste AFTER base.css inside a second <style> block.
+   FONT: CARIAD uses "FK CARIAD Light" (proprietary). Fallback:
+         Inter at light weight (300/400). Add no extra Google Font.
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: WHITE mode ─── */
+  --bg:#FFFFFF;
+  --bg2:#FAFAFB;
+  --surface:rgba(29,6,56,0.025);
+  --surface2:rgba(29,6,56,0.05);
+  --border:rgba(29,6,56,0.10);
+  --border2:rgba(29,6,56,0.22);
+
+  /* ─── Text: Deep Purple-Navy on white ─── */
+  --text:#1D0638;            /* CARIAD Dark 1 */
+  --text-dim:#373741;        /* Charcoal Gray */
+  --text-muted:#6A6A6A;
+
+  /* ─── CARIAD Blue-Violet (primary) ─── */
+  --blue:#442EE0;
+  --blue-g:rgba(68,46,224,0.08);
+  --blue-b:rgba(68,46,224,0.28);
+
+  /* ─── CARIAD Green (secondary / hyperlink) ─── */
+  --green:#1EEF97;
+  --green-g:rgba(30,239,151,0.10);
+  --green-b:rgba(30,239,151,0.32);
+
+  /* purple collapses to brand blue-violet */
+  --purple:#442EE0;
+  --purple-g:rgba(68,46,224,0.08);
+  --purple-b:rgba(68,46,224,0.28);
+
+  /* cyan collapses to CARIAD green */
+  --cyan:#1EEF97;
+  --cyan-g:rgba(30,239,151,0.10);
+  --cyan-b:rgba(30,239,151,0.32);
+
+  /* ─── Yellow / Orange / Red — accents ─── */
+  --amber:#FBAE40;           /* Orange — layout guide */
+  --amber-g:rgba(251,174,64,0.10);
+  --amber-b:rgba(251,174,64,0.30);
+
+  --red:#EE4C40;             /* Red/Coral — alerts */
+  --red-g:rgba(238,76,64,0.09);
+  --red-b:rgba(238,76,64,0.28);
+}
+
+/* ─── Typography ─── */
+body{font-family:'Inter',-apple-system,sans-serif;font-weight:300;color:#1D0638}
+.h1,.h2,.h3{font-family:'Inter',sans-serif;font-weight:400;letter-spacing:-0.01em;color:#1D0638}
+.h1{font-weight:300;letter-spacing:-0.015em}
+
+/* ─── Hero — light, calm, brand-violet eyebrow ─── */
+.hero-eyebrow{
+  background:rgba(68,46,224,0.08);
+  border:1px solid rgba(68,46,224,0.28);
+  color:#442EE0;
+}
+.hero-title{
+  font-weight:400;
+  letter-spacing:-.02em;
+  background:linear-gradient(140deg,#1D0638 0%,#442EE0 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-grid{
+  background-image:linear-gradient(rgba(29,6,56,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(29,6,56,.035) 1px,transparent 1px);
+}
+.hero-glow1{background:radial-gradient(circle,rgba(68,46,224,0.08) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(30,239,151,0.06) 0%,transparent 60%)}
+.hero-tag{
+  background:rgba(29,6,56,0.04);
+  border:1px solid rgba(29,6,56,0.12);
+  color:#373741;
+}
+.hero-scroll{color:#6A6A6A}
+.scroll-bar{background:#6A6A6A}
+
+/* ─── Cards — white surface, subtle violet border ─── */
+.card{
+  background:#FFFFFF;
+  border:1px solid rgba(29,6,56,0.10);
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(29,6,56,0.06);
+}
+.card:hover{
+  background:#FFFFFF;
+  border-color:rgba(68,46,224,0.35);
+  box-shadow:0 6px 20px rgba(68,46,224,0.10);
+}
+
+/* ─── Phase-alt — barely-grey hint ─── */
+.phase-alt{background:#FAFAFB}
+.phase-bg-num{color:rgba(29,6,56,0.025)}
+
+/* ─── Terminal stays dark for legibility, with CARIAD violet border ─── */
+.term{
+  background:#1D0638;
+  border:1px solid rgba(68,46,224,0.45);
+  border-radius:12px;
+  box-shadow:0 8px 24px rgba(29,6,56,0.12);
+}
+.term-bar{background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.08)}
+.term-body{color:#FFFFFF}
+.td-r{background:#EE4C40}.td-a{background:#FEF04A}.td-g{background:#1EEF97}
+
+/* Syntax colors on dark terminal — CARIAD palette */
+.ck{color:#1EEF97}                          /* keywords — CARIAD Green */
+.cf{color:#FEF04A}                          /* functions — Yellow */
+.cs{color:#FBAE40}                          /* strings — Orange */
+.ct{color:#1EEF97}                          /* types — CARIAD Green */
+.cc{color:rgba(255,255,255,0.4);font-style:italic}
+.cn{color:#FBAE40}                          /* numbers — Orange */
+.cp{color:rgba(255,255,255,0.85)}
+
+.gk{color:#1EEF97;font-weight:700}
+.gc{color:#FEF04A}
+.gv{color:#FBAE40}
+.gt{color:#FFFFFF}
+
+/* ─── File-tree on dark terminal bg ─── */
+.ftd{color:#1EEF97}
+.ftf{color:rgba(255,255,255,0.55)}
+.ftn{color:#FEF04A}
+.fta{color:#FBAE40}
+
+/* ─── Skill-tags — white with violet text ─── */
+.skill-tag{
+  background:rgba(68,46,224,0.06);
+  border:1px solid rgba(68,46,224,0.22);
+  color:#442EE0;
+}
+
+/* ─── Phase-nav — CARIAD violet dot ─── */
+.pn-dot{background:rgba(29,6,56,0.15)}
+.pn-dot.active{background:#442EE0;box-shadow:0 0 10px rgba(68,46,224,0.45)}
+.pn-seg{background:rgba(29,6,56,0.10)}
+.pn-dot::after{color:#373741}
+
+/* ─── Pipeline ─── */
+.pipe-icon{background:#FFFFFF;border-color:rgba(29,6,56,0.15);color:#1D0638}
+.pipe-step+.pipe-step .pipe-icon::before{background:rgba(29,6,56,0.18)}
+
+/* ─── Status pills ─── */
+.s-blue{background:rgba(68,46,224,0.08);color:#442EE0;border:1px solid rgba(68,46,224,0.30)}
+.s-green{background:rgba(30,239,151,0.10);color:#0B9C5E;border:1px solid rgba(30,239,151,0.40)}
+.s-red{background:rgba(238,76,64,0.08);color:#EE4C40;border:1px solid rgba(238,76,64,0.28)}
+.s-amber{background:rgba(251,174,64,0.10);color:#B36F1A;border:1px solid rgba(251,174,64,0.35)}
+.s-purple{background:rgba(68,46,224,0.08);color:#442EE0;border:1px solid rgba(68,46,224,0.30)}
+
+/* ─── Audit rows ─── */
+.audit-crit{background:rgba(238,76,64,0.07);border-color:rgba(238,76,64,0.30);color:#1D0638}
+.audit-warn{background:rgba(251,174,64,0.10);border-color:rgba(251,174,64,0.35);color:#1D0638}
+.audit-ok{background:rgba(30,239,151,0.10);border-color:rgba(30,239,151,0.40);color:#1D0638}
+
+/* ─── Selection — CARIAD brand ─── */
+::selection{background:#442EE0;color:#FFFFFF}
+
+/* ─── ALTERNATE MODES — uncomment one to switch ─── */
+/* === BLUE MODE (CARIAD signature blue background) ===
+:root{
+  --bg:#442EE0;--bg2:#3724C2;
+  --surface:rgba(255,255,255,0.05);--surface2:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.16);--border2:rgba(255,255,255,0.32);
+  --text:#FFFFFF;--text-dim:rgba(255,255,255,0.78);--text-muted:rgba(255,255,255,0.50);
+}
+.card{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.16);box-shadow:none}
+.hero-title{background:linear-gradient(140deg,#FFFFFF 0%,#1EEF97 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.phase-alt{background:#3724C2}
+*/
+
+/* === DARK MODE (Deep Purple-Navy background) ===
+:root{
+  --bg:#1D0638;--bg2:#160428;
+  --surface:rgba(255,255,255,0.04);--surface2:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.13);--border2:rgba(255,255,255,0.26);
+  --text:#FFFFFF;--text-dim:rgba(255,255,255,0.72);--text-muted:rgba(255,255,255,0.42);
+}
+.card{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.13);box-shadow:none}
+.phase-alt{background:#160428}
+.hero-title{background:linear-gradient(140deg,#FFFFFF 0%,#442EE0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+*/

@@ -1,0 +1,157 @@
+/* ============================================================
+   CONSULTING THEME for scroll-deck
+   "Premium consulting — deep navy + gold, conservative, elegant."
+   Extracted from softwareschmiede-consulting.html
+
+   USAGE: Paste AFTER base.css in a second <style> block.
+   FONT: no extra font needed.
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: deep royal navy ─── */
+  --bg:#0D1A47;
+  --bg2:#0A1540;
+  --surface:rgba(201,168,76,0.05);
+  --surface2:rgba(201,168,76,0.10);
+  --border:rgba(201,168,76,0.14);
+  --border2:rgba(201,168,76,0.28);
+
+  /* ─── Text: warm cream on royal navy ─── */
+  --text:#F4F2EE;
+  --text-dim:rgba(244,242,238,0.55);
+  --text-muted:rgba(244,242,238,0.25);
+
+  /* ─── Mono-accent: Gold dominates everything ─── */
+  --blue:#C9A84C;
+  --blue-g:rgba(201,168,76,0.08);
+  --blue-b:rgba(201,168,76,0.26);
+
+  --green:#C9A84C;
+  --green-g:rgba(201,168,76,0.08);
+  --green-b:rgba(201,168,76,0.26);
+
+  --amber:#C9A84C;
+  --amber-g:rgba(201,168,76,0.08);
+  --amber-b:rgba(201,168,76,0.26);
+
+  --purple:#C9A84C;
+  --purple-g:rgba(201,168,76,0.08);
+  --purple-b:rgba(201,168,76,0.26);
+
+  --cyan:#C9A84C;
+  --cyan-g:rgba(201,168,76,0.08);
+  --cyan-b:rgba(201,168,76,0.26);
+
+  /* Soft variant for "off" states */
+  --red:rgba(201,168,76,0.6);
+  --red-g:rgba(201,168,76,0.06);
+  --red-b:rgba(201,168,76,0.20);
+}
+
+/* ─── Gold accent bar at top ─── */
+body{position:relative}
+body::before{
+  content:'';
+  position:fixed;top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,#C9A84C,rgba(201,168,76,0.3));
+  z-index:9999;pointer-events:none;
+}
+
+/* ─── Typography ─── */
+.h1,.h2,.h3{color:#F4F2EE;letter-spacing:-.02em}
+.h1{font-weight:800}
+
+/* ─── Conservative rounding ─── */
+.badge,.status,.skill-tag,.audit-row{border-radius:3px !important}
+
+/* ─── Hero ─── */
+.hero-eyebrow{
+  background:rgba(201,168,76,0.10);
+  border:1px solid rgba(201,168,76,0.30);
+  color:#C9A84C;
+  border-radius:3px;
+  letter-spacing:.12em;
+}
+.hero-title{
+  font-weight:800;
+  background:linear-gradient(140deg,#F4F2EE 0%,#C9A84C 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-grid{
+  background-image:linear-gradient(rgba(201,168,76,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(201,168,76,.025) 1px,transparent 1px);
+}
+.hero-glow1{background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(201,168,76,0.05) 0%,transparent 60%)}
+
+/* ─── Cards ─── */
+.card{
+  background:rgba(201,168,76,0.04);
+  border:1px solid rgba(201,168,76,0.18);
+  border-radius:6px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+}
+.card:hover{border-color:rgba(201,168,76,0.40);background:rgba(201,168,76,0.06)}
+
+/* ─── Phase ─── */
+.phase-alt{background:#0A1540}
+.phase-bg-num{color:rgba(201,168,76,0.02)}
+
+/* ─── Terminal — black with gold accent ─── */
+.term{
+  background:#050B1F;
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:4px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+}
+.term-bar{background:rgba(201,168,76,0.05);border-bottom:1px solid rgba(201,168,76,0.18)}
+.td-r{background:rgba(201,168,76,0.3)}
+.td-a{background:rgba(201,168,76,0.5)}
+.td-g{background:#C9A84C}
+
+/* ─── Syntax — gold-tinted mono palette ─── */
+.ck{color:#C9A84C;font-weight:700}
+.cf{color:#F4F2EE}
+.cs{color:rgba(244,242,238,0.72)}
+.ct{color:rgba(201,168,76,0.9)}
+.cc{color:rgba(244,242,238,0.28);font-style:italic}
+.cn{color:#C9A84C}
+.cp{color:rgba(244,242,238,0.65)}
+
+.gk{color:#C9A84C;font-weight:700}
+.gc{color:rgba(201,168,76,0.85)}
+.gv{color:rgba(244,242,238,0.7)}
+.gt{color:#F4F2EE}
+
+.ftd{color:#C9A84C}
+.ftf{color:var(--text-dim)}
+.ftn{color:rgba(201,168,76,0.8)}
+.fta{color:rgba(201,168,76,0.65)}
+
+/* ─── Phase-nav ─── */
+.pn-dot{background:rgba(201,168,76,0.2)}
+.pn-dot.active{background:#C9A84C;box-shadow:0 0 8px rgba(201,168,76,0.4)}
+.pn-seg{background:rgba(201,168,76,0.18)}
+
+/* ─── Skill-tags ─── */
+.skill-tag{
+  background:rgba(201,168,76,0.07);
+  border:1px solid rgba(201,168,76,0.22);
+  color:rgba(201,168,76,0.8);
+}
+
+/* ─── Pipeline ─── */
+.pipe-icon{background:rgba(201,168,76,0.06);border-color:rgba(201,168,76,0.30);color:#C9A84C}
+.pipe-step+.pipe-step .pipe-icon::before{background:rgba(201,168,76,0.20)}
+
+/* ─── Status pills — all collapse to gold mono ─── */
+.s-red,.s-green,.s-amber,.s-blue,.s-purple{
+  background:rgba(201,168,76,0.08);
+  color:#C9A84C;
+  border:1px solid rgba(201,168,76,0.26);
+}
+
+/* ─── Selection ─── */
+::selection{background:#C9A84C;color:#0D1A47}

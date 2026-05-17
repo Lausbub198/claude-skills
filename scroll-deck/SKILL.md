@@ -38,9 +38,41 @@ Each section gets one accent color from the palette. Use them to signal meaning,
 - `--green` → success, done, implementation, archive
 - `--cyan` → verification, checking, review
 
+### Step 2.5 — Pick a theme (optional)
+
+By default, the deck uses the built-in dark techy palette (Dracula-inspired).
+If the user wants a branded or stylized deck, switch to a theme from `assets/themes/`:
+
+| Theme        | Vibe                                                | Background          | Extra font       |
+| :----------- | :-------------------------------------------------- | :------------------ | :--------------- |
+| default      | Dark techy, Dracula syntax, blue/cyan/coral mix     | `#06090F` near-black| —                |
+| `built`      | BUILT brand — KI für den Mittelstand                | `#0A0E1A` Midnight  | Space Grotesk    |
+| `cariad`     | CARIAD Master V1.4 — light enterprise               | `#FFFFFF` white     | —                |
+| `blueprint`  | Engineering schematic, mono-Pulse-Blue, sharp       | `#0B1426` deep navy | —                |
+| `consulting` | Premium consulting, navy + gold mono                | `#0D1A47` royal navy| —                |
+| `editorial`  | Magazine print, cream paper, near-black ink, coral  | `#F2EDE4` cream     | —                |
+| `terminal`   | Retro CRT, amber phosphor, monospace everything     | `#000` pure black   | —                |
+
+**Trigger phrase detection** (match user's prompt before asking):
+
+| Theme        | Trigger phrases / keywords                                                                                                          |
+| :----------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| `built`      | "BUILT", "BUILT theme", "BUILT brand", "BUILT-Branding", *„Gebaut, nicht gekauft"*, "Mittelstand", "KI für den Mittelstand", BUILT channel content |
+| `cariad`     | "CARIAD", "CARIAD theme", "CARIAD-Stil", "CARIAD Master", "CARIAD violet", "FK CARIAD", "VW.OS", any CARIAD/Volkswagen ecosystem context |
+| `blueprint`  | "blueprint", "im blueprint Stil", "Engineering Stil", "schematic", "architecture deck"                                              |
+| `consulting` | "consulting", "premium", "McKinsey-Stil", "Bain", "BCG", "executive deck", "gold accent", "konservativ"                             |
+| `editorial`  | "editorial", "magazin", "magazine", "print", "Zeitschrift", "Reportage", "hell", "light theme", "cream paper"                       |
+| `terminal`   | "terminal", "CRT", "retro", "amber", "phosphor", "hacker", "old-school", "tty"                                                      |
+
+**When a theme is selected:**
+1. Read `assets/themes/README.md` for theme-specific rules (e.g. BUILT's 3-accent rule, CARIAD's mode variants)
+2. Read `assets/themes/<theme>.css` and embed it AFTER `base.css` in a second `<style>` block
+3. Add any extra Google Fonts the theme requires (only `built` needs Space Grotesk) to `<head>`
+
 ### Step 3 — Build the HTML file
 
 Load the CSS boilerplate from `assets/base.css` verbatim — do not rewrite it. Add your HTML on top.
+If a theme is selected, embed its override CSS in a second `<style>` block AFTER base.css.
 
 **File structure:**
 ```html
@@ -52,9 +84,13 @@ Load the CSS boilerplate from `assets/base.css` verbatim — do not rewrite it. 
   <title>[Product Name]</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- ONLY IF theme=built: also add Space Grotesk -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"> -->
   <style>
     /* === PASTE base.css VERBATIM HERE === */
   </style>
+  <!-- ONLY IF a theme is selected, add a second style block AFTER base.css -->
+  <!-- <style>/* === PASTE themes/<theme>.css VERBATIM HERE === */</style> -->
 </head>
 <body>
   <!-- Phase Nav -->
@@ -114,6 +150,8 @@ Every phase section follows this skeleton:
 Alternate `.phase` and `.phase-alt` for visual rhythm (`.phase-alt` has slightly lighter background).
 
 ## Hero anatomy
+
+The hero content must be centered both horizontally AND vertically (in the middle of the viewport). Use `display:flex; align-items:center; justify-content:center; min-height:100vh` on the hero section, and `text-align:center` on `.hero-inner`.
 
 ```html
 <section class="hero" id="s0">

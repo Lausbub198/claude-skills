@@ -1,0 +1,164 @@
+/* ============================================================
+   EDITORIAL THEME for scroll-deck
+   "Magazine print — cream paper, near-black text, coral accent."
+   LIGHT MODE (the only light-bg theme so far).
+   Extracted from softwareschmiede-editorial.html
+
+   USAGE: Paste AFTER base.css in a second <style> block.
+   FONT: no extra font needed.
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: cream paper ─── */
+  --bg:#F2EDE4;
+  --bg2:#EDE8DF;
+  --surface:rgba(26,26,26,0.04);
+  --surface2:rgba(26,26,26,0.08);
+  --border:rgba(26,26,26,0.13);
+  --border2:rgba(26,26,26,0.24);
+
+  /* ─── Text: near-black ink on cream ─── */
+  --text:#1A1A1A;
+  --text-dim:#4A4540;
+  --text-muted:#9A948C;
+
+  /* ─── Mono-accent: Editorial Coral ─── */
+  --red:#FF6B4A;
+  --red-g:rgba(255,107,74,0.07);
+  --red-b:rgba(255,107,74,0.22);
+
+  --amber:#FF6B4A;
+  --amber-g:rgba(255,107,74,0.07);
+  --amber-b:rgba(255,107,74,0.22);
+
+  --blue:#FF6B4A;
+  --blue-g:rgba(255,107,74,0.08);
+  --blue-b:rgba(255,107,74,0.24);
+
+  --cyan:#FF6B4A;
+  --cyan-g:rgba(255,107,74,0.07);
+  --cyan-b:rgba(255,107,74,0.22);
+
+  /* "off" states stay in ink-black */
+  --green:#1A1A1A;
+  --green-g:rgba(26,26,26,0.06);
+  --green-b:rgba(26,26,26,0.20);
+
+  --purple:#1A1A1A;
+  --purple-g:rgba(26,26,26,0.06);
+  --purple-b:rgba(26,26,26,0.20);
+}
+
+/* ─── Sharp corners — print feel ─── */
+.card,.term,.skill-tag,.badge,.status,.audit-row,.pipe-icon,.hero-eyebrow,.hero-tag,.pn-dot{
+  border-radius:0 !important;
+}
+
+/* ─── Typography — heavier weights ─── */
+.h1{font-weight:900;letter-spacing:-.035em;line-height:1.05}
+.h2{font-weight:800;letter-spacing:-.02em}
+.h3{font-weight:700}
+.body-lg,.body{color:#4A4540}
+
+/* ─── Hero ─── */
+.hero-eyebrow{
+  background:rgba(255,107,74,0.08);
+  border:1px solid rgba(255,107,74,0.30);
+  color:#FF6B4A;
+  font-weight:700;letter-spacing:.12em;
+}
+.hero-title{
+  font-weight:900;
+  color:#1A1A1A;
+  background:none;
+  -webkit-text-fill-color:#1A1A1A;
+}
+.hero-sub{color:#4A4540}
+.hero-grid{background-image:none}
+.hero-glow1{background:radial-gradient(circle,rgba(255,107,74,0.06) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(26,26,26,0.04) 0%,transparent 60%)}
+.hero-tag{
+  background:rgba(26,26,26,0.04);
+  border:1px solid rgba(26,26,26,0.18);
+  color:#4A4540;
+}
+.hero-scroll{color:#9A948C}
+.scroll-bar{background:#9A948C}
+
+/* ─── Cards — paper feel ─── */
+.card{
+  background:#FFFFFF;
+  border:1px solid rgba(26,26,26,0.13);
+  box-shadow:none;
+}
+.card:hover{border-color:#1A1A1A;background:#FFFFFF}
+
+/* ─── Phase ─── */
+.phase-alt{background:#EDE8DF}
+.phase-bg-num{color:rgba(26,26,26,0.025);font-weight:900}
+
+/* ─── Terminal stays dark on cream — print contrast ─── */
+.term{
+  background:#1A1A1A;
+  border:1px solid rgba(26,26,26,0.30);
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+.term-bar{background:rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.10)}
+.term-body{color:#F0EDE8}
+.td-r{background:#FF5F57}.td-a{background:#FFBD2E}.td-g{background:#28CA41}
+
+/* Syntax — Dracula-style on near-black */
+.ck{color:#FF79C6}
+.cf{color:#50FA7B}
+.cs{color:#F1FA8C}
+.ct{color:#8BE9FD}
+.cc{color:#6272A4;font-style:italic}
+.cn{color:#BD93F9}
+.cp{color:#A9DC76}
+
+.gk{color:#FF79C6;font-weight:700}
+.gc{color:#8BE9FD}
+.gv{color:#F1FA8C}
+.gt{color:#F8F8F2}
+
+.ftd{color:#8BE9FD}
+.ftf{color:rgba(248,248,242,0.55)}
+.ftn{color:#50FA7B}
+.fta{color:#F1FA8C}
+
+/* ─── Skill-tags — ink chip ─── */
+.skill-tag{
+  background:rgba(26,26,26,0.06);
+  border:1px solid rgba(26,26,26,0.20);
+  color:#4A4540;
+}
+
+/* ─── Phase-nav — print bar ─── */
+.pn-dot{width:8px;height:8px;background:rgba(26,26,26,0.18);border-radius:0}
+.pn-dot.active{background:#FF6B4A;box-shadow:none}
+.pn-seg{background:rgba(26,26,26,0.14)}
+.pn-dot::after{color:#4A4540}
+
+/* ─── Pipeline ─── */
+.pipe-icon{background:#FFFFFF;border-color:rgba(26,26,26,0.20);color:#1A1A1A;border-radius:0}
+.pipe-step+.pipe-step .pipe-icon::before{background:rgba(26,26,26,0.22)}
+
+/* ─── Status pills — coral or ink ─── */
+.s-red,.s-amber,.s-blue,.s-cyan{
+  background:rgba(255,107,74,0.08);
+  color:#FF6B4A;
+  border:1px solid rgba(255,107,74,0.25);
+}
+.s-green,.s-purple{
+  background:rgba(26,26,26,0.06);
+  color:#1A1A1A;
+  border:1px solid rgba(26,26,26,0.20);
+}
+
+/* ─── Audit rows ─── */
+.audit-crit{background:rgba(255,107,74,0.06);border-color:rgba(255,107,74,0.30);color:#1A1A1A}
+.audit-warn{background:rgba(255,107,74,0.04);border-color:rgba(255,107,74,0.22);color:#4A4540}
+.audit-ok{background:rgba(26,26,26,0.04);border-color:rgba(26,26,26,0.18);color:#1A1A1A}
+
+/* ─── Selection ─── */
+::selection{background:#1A1A1A;color:#F2EDE4}

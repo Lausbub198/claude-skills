@@ -1,0 +1,189 @@
+/* ============================================================
+   BUILT THEME for scroll-deck
+   "Premium tech editorial — dark, calm, surgically lit."
+
+   USAGE: Paste this AFTER base.css inside the <style> block.
+          It overrides the default :root variables + selected
+          components with BUILT Design System tokens.
+   SOURCE: BUILT Brandbook v4.0 (Midnight canvas, Coral/Blue/Cyan
+          accents, Inter + Space Grotesk + JetBrains Mono).
+
+   ALSO: add this <link> to <head> next to the default Google Fonts:
+   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: Midnight (not black!) ─── */
+  --bg:#0A0E1A;              /* Midnight — dominant canvas */
+  --bg2:#131726;             /* between Midnight & Deep Slate */
+  --surface:rgba(74,158,255,0.04);
+  --surface2:#1B2038;        /* Deep Slate — card bg */
+  --border:rgba(74,158,255,0.18);
+  --border2:rgba(74,158,255,0.45);
+
+  /* ─── Text: Warm White, never pure ─── */
+  --text:#F0EDE8;            /* Warm White */
+  --text-dim:#8B92A8;        /* Soft Silver */
+  --text-muted:#4A5066;
+
+  /* ─── Accent: Electric Coral (primary, wow / CTA / brand) ─── */
+  --red:#FF6B4A;
+  --red-g:rgba(255,107,74,0.13);
+  --red-b:rgba(255,107,74,0.45);
+
+  /* amber collapses to coral — BUILT has no orange */
+  --amber:#FF6B4A;
+  --amber-g:rgba(255,107,74,0.13);
+  --amber-b:rgba(255,107,74,0.45);
+
+  /* ─── Accent: Pulse Blue ("AI is happening" / tech / spec) ─── */
+  --blue:#4A9EFF;
+  --blue-g:rgba(74,158,255,0.13);
+  --blue-b:rgba(74,158,255,0.45);
+
+  /* ─── Accent: Signal Cyan (success, "Problem gelöst") ─── */
+  --cyan:#00E5CC;
+  --cyan-g:rgba(0,229,204,0.13);
+  --cyan-b:rgba(0,229,204,0.45);
+
+  /* green collapses to Power Green (booster — use sparingly) */
+  --green:#3DDC84;
+  --green-g:rgba(61,220,132,0.13);
+  --green-b:rgba(61,220,132,0.45);
+
+  /* purple → Beacon Yellow (booster, used as highlight only) */
+  --purple:#FFD23F;
+  --purple-g:rgba(255,210,63,0.13);
+  --purple-b:rgba(255,210,63,0.45);
+}
+
+/* ─── Typography overrides — BUILT spec ─── */
+body{font-family:'Inter',-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.h1,.h2,.h3{font-family:'Inter',sans-serif;letter-spacing:-0.025em}
+.h1{font-weight:700}
+
+/* Numbers / KPIs / monospaced pill text uses Space Grotesk if needed */
+.kpi,.numeric{font-family:'Space Grotesk','Inter',sans-serif;font-feature-settings:'tnum' 1}
+
+/* ─── Hero — BUILT cinematic feel ─── */
+.hero-eyebrow{
+  background:var(--blue-g);
+  border:1px solid var(--blue-b);
+  color:var(--blue);
+}
+.hero-title{
+  font-weight:900;
+  letter-spacing:-.045em;
+  background:linear-gradient(140deg,#F0EDE8 0%,#8B92A8 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-grid{
+  background-image:linear-gradient(rgba(74,158,255,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(74,158,255,.035) 1px,transparent 1px);
+}
+.hero-glow1{background:radial-gradient(circle,rgba(255,107,74,.10) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(74,158,255,.08) 0%,transparent 60%)}
+.hero-tag{
+  background:rgba(74,158,255,0.04);
+  border:1px solid rgba(74,158,255,0.18);
+  color:var(--text-dim);
+}
+
+/* ─── Cards — Deep Slate with signature shadow ("Schwebende Tiefe") ─── */
+.card{
+  background:#1B2038;
+  border:1px solid rgba(74,158,255,0.18);
+  border-radius:16px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+  transition:border-color .26s cubic-bezier(0.16,1,0.3,1);
+}
+.card:hover{
+  border-color:rgba(74,158,255,0.45);
+  background:#1B2038;
+}
+
+/* ─── Terminal — Deep Slate, BUILT traffic lights ─── */
+.term{
+  background:#1B2038;
+  border:1px solid rgba(74,158,255,0.18);
+  border-radius:12px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.term-bar{
+  background:rgba(74,158,255,0.04);
+  border-bottom:1px solid rgba(74,158,255,0.12);
+}
+.td-r{background:#FF6B4A}
+.td-a{background:#FFD23F}
+.td-g{background:#00E5CC}
+
+/* ─── Syntax colors — recolored to BUILT palette ─── */
+.ck{color:#FF6B4A}                          /* keywords — Coral */
+.cf{color:#00E5CC}                          /* function names — Signal Cyan */
+.cs{color:#FFD23F}                          /* strings — Beacon Yellow */
+.ct{color:#4A9EFF}                          /* types — Pulse Blue */
+.cc{color:#8B92A8;font-style:italic}        /* comments — Soft Silver */
+.cn{color:#FF6B4A}                          /* numbers — Coral */
+.cp{color:#F0EDE8}                          /* params — Warm White */
+
+/* Gherkin — same palette */
+.gk{color:#FF6B4A;font-weight:700}
+.gc{color:#4A9EFF}
+.gv{color:#FFD23F}
+.gt{color:#F0EDE8}
+
+/* ─── File-tree colors ─── */
+.ftd{color:#4A9EFF}
+.ftf{color:#8B92A8}
+.ftn{color:#00E5CC}
+.fta{color:#FF6B4A}
+
+/* ─── Skill-tags ─── */
+.skill-tag{
+  background:rgba(74,158,255,0.04);
+  border:1px solid rgba(74,158,255,0.18);
+  color:var(--text-dim);
+}
+
+/* ─── Phase-nav active dot — Electric Coral ─── */
+.pn-dot.active{
+  background:#FF6B4A;
+  box-shadow:0 0 8px rgba(255,107,74,0.45);
+}
+
+/* ─── Phase background numeral — slightly more visible ─── */
+.phase-bg-num{color:rgba(74,158,255,0.018)}
+
+/* ─── Phase-alt — Deep Slate hint ─── */
+.phase-alt{background:#0E1322}
+
+/* ─── Pipeline track — Deep Slate icons ─── */
+.pipe-icon{background:#1B2038;border-color:rgba(74,158,255,0.18)}
+
+/* ─── Status pills get BUILT semantic mapping ─── */
+.status{font-family:'JetBrains Mono',monospace;font-weight:700}
+
+/* ─── Audit rows: use BUILT accents ─── */
+.audit-crit{background:rgba(255,107,74,0.10);border-color:rgba(255,107,74,0.45)}
+.audit-warn{background:rgba(255,210,63,0.10);border-color:rgba(255,210,63,0.45)}
+.audit-ok{background:rgba(0,229,204,0.10);border-color:rgba(0,229,204,0.45)}
+
+/* ─── Easing override to BUILT motion spec ─── */
+.reveal,.reveal-l,.reveal-r{transition:opacity .45s cubic-bezier(0.16,1,0.3,1),transform .45s cubic-bezier(0.16,1,0.3,1)}
+
+/* ─── "Wow" utility — for hero callouts or featured cards ─── */
+.wow-coral{box-shadow:0 0 24px rgba(255,107,74,0.35)}
+.wow-blue{box-shadow:0 0 32px rgba(74,158,255,0.30)}
+.wow-cyan{box-shadow:0 0 32px rgba(0,229,204,0.30)}
+
+/* ─── BUILT brand-promise treatment: "Gebaut, nicht gekauft." ─── */
+.built-promise em,
+.built-promise .accent{
+  font-style:italic;
+  color:#FF6B4A;
+  font-weight:700;
+}
+
+/* ─── Selection — BUILT brand ─── */
+::selection{background:#FF6B4A;color:#0A0E1A}

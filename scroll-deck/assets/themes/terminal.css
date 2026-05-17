@@ -1,0 +1,173 @@
+/* ============================================================
+   TERMINAL THEME for scroll-deck
+   "CRT amber — pure black, monochrome amber, retro tech."
+   Extracted from softwareschmiede-terminal.html
+
+   USAGE: Paste AFTER base.css in a second <style> block.
+   FONT: no extra font needed (everything is mono).
+   ============================================================ */
+
+:root{
+  /* ─── Canvas: pure black like an off CRT ─── */
+  --bg:#000000;
+  --bg2:#060400;
+  --surface:rgba(232,160,0,0.04);
+  --surface2:rgba(232,160,0,0.09);
+  --border:rgba(232,160,0,0.18);
+  --border2:rgba(232,160,0,0.36);
+
+  /* ─── Text: amber phosphor ─── */
+  --text:#E8A000;
+  --text-dim:rgba(232,160,0,0.62);
+  --text-muted:rgba(232,160,0,0.28);
+
+  /* ─── Mono-accent: amber everywhere ─── */
+  --blue:#E8A000;
+  --blue-g:rgba(232,160,0,0.06);
+  --blue-b:rgba(232,160,0,0.30);
+  --green:#E8A000;
+  --green-g:rgba(232,160,0,0.06);
+  --green-b:rgba(232,160,0,0.30);
+  --amber:#E8A000;
+  --amber-g:rgba(232,160,0,0.06);
+  --amber-b:rgba(232,160,0,0.30);
+  --purple:#E8A000;
+  --purple-g:rgba(232,160,0,0.06);
+  --purple-b:rgba(232,160,0,0.30);
+  --cyan:#E8A000;
+  --cyan-g:rgba(232,160,0,0.06);
+  --cyan-b:rgba(232,160,0,0.30);
+  --red:rgba(232,160,0,0.75);
+  --red-g:rgba(232,160,0,0.04);
+  --red-b:rgba(232,160,0,0.24);
+}
+
+/* ─── Everything mono ─── */
+body{background:#000;font-family:'JetBrains Mono',monospace}
+.h1,.h2,.h3,.h4{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:0;color:#E8A000}
+.body-lg,.body{font-family:'JetBrains Mono',monospace;color:rgba(232,160,0,0.62)}
+
+/* ─── Sharp corners — CRT pixel grid ─── */
+*,*::before,*::after{border-radius:0 !important}
+
+/* ─── Hero ─── */
+.hero-eyebrow{
+  background:rgba(232,160,0,0.07);
+  border:1px solid rgba(232,160,0,0.30);
+  color:#E8A000;
+  font-family:'JetBrains Mono',monospace;
+  font-weight:600;letter-spacing:.1em;
+}
+.hero-title{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  letter-spacing:-.02em;
+  color:#E8A000;
+  background:none;
+  -webkit-text-fill-color:#E8A000;
+  text-shadow:0 0 12px rgba(232,160,0,0.4), 0 0 24px rgba(232,160,0,0.2);
+}
+.hero-sub{color:rgba(232,160,0,0.62);font-family:'JetBrains Mono',monospace}
+.hero-grid{
+  background-image:linear-gradient(rgba(232,160,0,.04) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(232,160,0,.04) 1px,transparent 1px);
+  background-size:20px 20px;
+}
+.hero-glow1{background:radial-gradient(circle,rgba(232,160,0,0.08) 0%,transparent 60%)}
+.hero-glow2{background:radial-gradient(circle,rgba(232,160,0,0.05) 0%,transparent 60%)}
+.hero-tag{
+  background:rgba(232,160,0,0.04);
+  border:1px solid rgba(232,160,0,0.22);
+  color:rgba(232,160,0,0.7);
+}
+.hero-scroll{color:rgba(232,160,0,0.5)}
+.scroll-bar{background:rgba(232,160,0,0.5)}
+
+/* ─── Cards — terminal panels ─── */
+.card{
+  background:rgba(232,160,0,0.03);
+  border:1px solid rgba(232,160,0,0.22);
+  box-shadow:inset 0 0 0 1px rgba(232,160,0,0.06);
+}
+.card:hover{border-color:rgba(232,160,0,0.50);background:rgba(232,160,0,0.05)}
+
+/* ─── Phase ─── */
+.phase-alt{background:#060400}
+.phase-bg-num{color:rgba(232,160,0,0.02);font-family:'JetBrains Mono',monospace}
+
+/* ─── Terminal — pure black with amber ─── */
+.term{
+  background:#000;
+  border:1px solid rgba(232,160,0,0.38);
+  box-shadow:0 0 32px rgba(232,160,0,0.12);
+}
+.term-bar{background:rgba(232,160,0,0.04);border-bottom:1px solid rgba(232,160,0,0.22)}
+.term-body{color:#E8A000}
+.td{background:rgba(232,160,0,0.4)}
+.td-r{background:rgba(232,160,0,0.3)}
+.td-a{background:rgba(232,160,0,0.5)}
+.td-g{background:#E8A000}
+.term-label{color:rgba(232,160,0,0.45)}
+
+/* ─── Syntax — full amber monochrome ─── */
+.ck{color:#E8A000;font-weight:700}
+.cf{color:#E8A000}
+.cs{color:rgba(232,160,0,0.75)}
+.ct{color:rgba(232,160,0,0.9)}
+.cc{color:rgba(232,160,0,0.35);font-style:italic}
+.cn{color:#E8A000}
+.cp{color:rgba(232,160,0,0.65)}
+
+.gk{color:#E8A000;font-weight:700}
+.gc{color:rgba(232,160,0,0.85)}
+.gv{color:rgba(232,160,0,0.7)}
+.gt{color:#E8A000}
+
+.ftd{color:#E8A000}
+.ftf{color:rgba(232,160,0,0.6)}
+.ftn{color:rgba(232,160,0,0.8)}
+.fta{color:rgba(232,160,0,0.65)}
+
+/* ─── Skill-tags — minimal amber chips ─── */
+.skill-tag{
+  background:rgba(232,160,0,0.05);
+  border:1px solid rgba(232,160,0,0.26);
+  color:rgba(232,160,0,0.7);
+}
+
+/* ─── Phase-nav ─── */
+.pn-dot{background:rgba(232,160,0,0.22);width:6px;height:6px}
+.pn-dot.active{background:#E8A000;box-shadow:0 0 8px rgba(232,160,0,0.5)}
+.pn-seg{background:rgba(232,160,0,0.18)}
+.pn-dot::after{color:rgba(232,160,0,0.7);font-family:'JetBrains Mono',monospace}
+
+/* ─── Pipeline ─── */
+.pipe-icon{background:#000;border-color:rgba(232,160,0,0.38);color:#E8A000;font-family:'JetBrains Mono',monospace}
+.pipe-step+.pipe-step .pipe-icon::before{background:rgba(232,160,0,0.30)}
+
+/* ─── Status pills all collapse to amber ─── */
+.s-red,.s-green,.s-amber,.s-blue,.s-purple{
+  background:rgba(232,160,0,0.06);
+  color:#E8A000;
+  border:1px solid rgba(232,160,0,0.30);
+}
+
+/* ─── Audit rows ─── */
+.audit-row{background:rgba(232,160,0,0.04);border-color:rgba(232,160,0,0.22);color:rgba(232,160,0,0.7)}
+.audit-crit{border-color:#E8A000}
+
+/* ─── Selection ─── */
+::selection{background:#E8A000;color:#000}
+
+/* ─── Optional CRT scanline overlay ─── */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background:repeating-linear-gradient(
+    180deg,
+    transparent 0px, transparent 2px,
+    rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 3px
+  );
+  pointer-events:none;z-index:9998;
+  mix-blend-mode:multiply;
+}
