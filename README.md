@@ -20,6 +20,7 @@ Each skill is a self-contained directory. Copy any skill into `~/.claude/skills/
 | [youtube-strategy](./youtube-strategy/) | Full pre-production strategy pipeline: Topic Research → Competitive Analysis → SEO & Metadata → Retention Script → A/B Testing → Demo Pack |
 | [youtube-thumbnail](./youtube-thumbnail/) | Generates YouTube thumbnails via Gemini Flash based on video scripts and the BUILT Brandbook — 4 background variations per run |
 | [mittelstands-usecase-analyser](./mittelstands-usecase-analyser/) | Analysiert deutsche Mittelstandsberufe (Handwerk, KMU, Dienstleistung) und erstellt KI-Transformationskonzepte mit 7-Punkte-Analyse, Mermaid-Diagrammen, SaaS-Vision, ROI-Metriken sowie Short/Long-Form-Videoskripten und Tech-Stack-Roadmaps |
+| [topic-explainer](./topic-explainer/) | Bereitet beliebige Themen didaktisch für absolute Anfänger als selbsterklärendes Slide-Deck oder Website-Material auf — zweistufig mit Recherche, Schwerpunkt- und Handout/Präsentations/Hybrid-Modus-Frage, englischen Nano-Banana-2-Bild-Prompts im fixen Cinematic-Stil und Diagrammbeschreibungen |
 
 ---
 

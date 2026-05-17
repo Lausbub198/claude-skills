@@ -1,0 +1,29 @@
+{
+  "skill_name": "topic-explainer",
+  "evals": [
+    {
+      "id": 0,
+      "name": "current-topic-needs-research",
+      "prompt": "Erkläre mir den EU AI Act für absolute Anfänger. Ich brauche das als Slide-Deck, um es Kollegen vorzustellen, die noch nie davon gehört haben. Mach mir bitte den Strukturvorschlag.",
+      "expected_output": "Phase-1 Output: 5-7 Fakten-Bullets über den EU AI Act, dann eine konkrete Schwerpunktfrage mit Optionen, dann eine 6-9-teilige Gliederung. KEINE Folien-Ausarbeitung (Phase 2), weil noch kein Schwerpunkt freigegeben.",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 1,
+      "name": "stable-topic-no-research-full-run",
+      "prompt": "Bereite mir das Thema 'Wie funktioniert ein Large Language Model (LLM)' als selbsterklärendes Slide-Deck auf. Zielgruppe: 20-Jährige ohne Vorwissen. Schwerpunkt soll auf 'Wie funktioniert das technisch grob' liegen — gib mir bitte sowohl die Struktur als auch direkt die ausgearbeiteten Folien. Ich übernehme dann die Weiterverarbeitung als Markdown.",
+      "expected_output": "Phase 1 + Phase 2 in einem Rutsch (weil Schwerpunkt schon im Prompt steht). Phase 2 hat 6-9 Folien, jede mit [Titel]/[Inhalt]/[Visual]. Format-Abwechslung. Mindestens 3 Folien mit Nano-Banana-Prompt (englisch, mit allen 4 Style-Keywords). Mindestens 2 Folien mit Diagrammbeschreibung statt Bild. Am Ende Delivery-Frage oder direkt Speicherung als Markdown (Option a).",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 2,
+      "name": "source-material-given",
+      "prompt": "Hier ist Quellmaterial über Photosynthese:\n\n'Photosynthese ist der Prozess, mit dem Pflanzen Lichtenergie der Sonne in chemische Energie umwandeln. Sie nehmen Wasser aus dem Boden und Kohlendioxid aus der Luft auf. In den Chloroplasten der Blätter — kleinen grünen Zellbausteinen, die Chlorophyll enthalten — wird mit Hilfe von Sonnenlicht Glukose (Traubenzucker) hergestellt. Als Nebenprodukt entsteht Sauerstoff, den die Pflanze in die Luft abgibt. Die Glukose dient der Pflanze als Energiequelle für ihr Wachstum. Ohne Photosynthese gäbe es kein Leben, wie wir es kennen — Tiere und Menschen atmen den Sauerstoff, der bei diesem Prozess freigesetzt wird.'\n\nMach daraus selbsterklärende Website-Sektionen für 20-jährige Anfänger. Erst Vorschlag zur Struktur, dann warte auf meine Freigabe.",
+      "expected_output": "Phase 1 nur: Fakten-Liste (aus dem Quelltext extrahiert, KEINE Web-Recherche), Schwerpunktfrage, Gliederung (6-9 Sektionen). Stopp danach. Keine Phase 2.",
+      "files": [],
+      "assertions": []
+    }
+  ]
+}
