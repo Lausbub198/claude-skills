@@ -133,11 +133,11 @@ Wähle Diagramm wenn Beziehungen/Prozesse zu zeigen sind. Wähle Bild wenn Atmos
 
 2. **Eine Folie = eine Idee.** Wenn du merkst, dass du zwei Konzepte in eine Folie quetschst — split sie.
 
-3. **Visuals abwechseln.** Mix aus Diagrammen (Prozesse, Beziehungen) und Bildern (Atmosphäre, Konzept-Visualisierung). Nicht alle Folien sollten Bilder haben — Diagramme sind oft didaktisch stärker.
+3. **Visuals — zwei Familien, klare Wahl.** Jedes Visual ist entweder **Cinematic-Hero** (atmosphärisch, symbolisch — für Einstieg, Outro, emotionale Momente) ODER **Erklär-Skizze** (Visual trägt zum Verständnis bei — für 80 % aller Folien). Bei Erklär-Skizzen wählst du aus 4 Stilen: **A Sketchbook** (handgezeichnet), **B Editorial** (NYT-Vibe), **C Schematic** (Apple-Keynote), **D 3-Panel-Comic** (vorher/nachher). Details + Stil-Wahl-Tabelle in `references/nano-banana-prompt-recipe.md`. Daumenregel: max. 1–2 Cinematic-Heros pro Deck, max. 2 verschiedene Erklär-Stile mischen.
 
 4. **Jargon-Check pro Folie.** Bevor du eine Folie abgibst, überfliege sie. Jedes Fachwort, das ein 20-jähriger Anfänger nicht zwingend kennt: in derselben Folie erklären (Klammer-Definition, Mini-Analogie, oder Fußnoten-Stil).
 
-5. **Bild-Prompt-Pflicht.** Wenn die Folie ein Bild bekommt, MUSS der Prompt enthalten: `dark modern minimalist, cinematic, teal and orange, walnut wood`. Wenn auch nur eines fehlt, ist der Prompt kaputt.
+5. **Bild-Prompt-Pflicht.** Wenn die Folie ein Bild bekommt, MUSS der Prompt die vier Brand-Konstanten enthalten: `dark modern minimalist, cinematic, teal and orange, walnut wood`. Auch in den Erklär-Skizzen-Stilen — sonst bricht die visuelle Konsistenz. Wenn auch nur eines fehlt, ist der Prompt kaputt.
 
 Liefere die Folien **alle in einem Rutsch ab**, nicht eine nach der anderen mit Wartezeit (außer der User bittet darum).
 
